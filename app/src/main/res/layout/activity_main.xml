@@ -8,20 +8,21 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="180dp"
-        android:layout_marginTop="398dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="173dp"
         android:fontFamily="monospace"
         android:text="@string/title"
         android:textColor="@color/white"
         android:textSize="48sp"
+        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewQuote" />
+        app:layout_constraintTop_toBottomOf="@+id/imageViewEulerMain" />
 
     <TextView
         android:id="@+id/textViewQuote"
@@ -32,7 +33,7 @@
         android:layout_marginEnd="32dp"
         android:alpha="0.7"
         android:fontFamily="monospace"
-        android:text="Logic is the foundation of the certainty of all the knowledge we acquire"
+        android:text='"Logic is the foundation of the certainty of all the knowledge we acquire"'
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="14sp"
@@ -40,43 +41,51 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <ImageView
-        android:id="@+id/imageView4"
-        android:layout_width="54dp"
-        android:layout_height="62dp"
-        android:layout_marginStart="95dp"
-        android:layout_marginTop="102dp"
-        android:layout_marginBottom="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/frameLayout"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:srcCompat="@drawable/info_button" />
-
     <FrameLayout
         android:id="@+id/frameLayout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="32dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle">
 
         <ImageView
-            android:id="@+id/imageView6"
+            android:id="@+id/imageViewPlayButtonBackground"
             android:layout_width="133dp"
             android:layout_height="137dp"
             android:layout_marginBottom="24dp"
             app:srcCompat="@drawable/play_button_background" />
 
         <ImageView
-            android:id="@+id/imageView3"
+            android:id="@+id/imageViewPlayButton"
             android:layout_width="129dp"
             android:layout_height="135dp"
             android:layout_marginBottom="28dp"
             app:srcCompat="@drawable/play_button" />
+
     </FrameLayout>
+
+    <ImageView
+        android:id="@+id/imageViewEulerMain"
+        android:layout_width="293dp"
+        android:layout_height="356dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewQuote"
+        app:srcCompat="@drawable/euler" />
+
+    <ImageView
+        android:id="@+id/imageViewInfoButton"
+        android:layout_width="54dp"
+        android:layout_height="62dp"
+        android:layout_marginStart="90dp"
+        android:layout_marginTop="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:srcCompat="@drawable/info_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
