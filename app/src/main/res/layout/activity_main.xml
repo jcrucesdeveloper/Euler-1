@@ -33,7 +33,7 @@
         android:layout_marginEnd="32dp"
         android:alpha="0.7"
         android:fontFamily="serif"
-        android:text='"Logic is the foundation of the certainty of all the knowledge we acquire"'
+        android:text="@string/quote_place_holder"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"

@@ -4,16 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import java.util.Random;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView textViewQuote, textViewTitle;
     ImageView imageViewInfoButton, imageViewPlayButton,imageViewPlayButtonBackground,imageViewEulerPrincipal;
+
+    private String[] quotes;
 
 
     @Override
@@ -30,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         imageViewEulerPrincipal = (ImageView) findViewById(R.id.imageViewEulerMain);
 
         fadeInAnimation();
+        selectQuote();
     }
 
     public void onClickListLevels(View view)
@@ -44,6 +50,15 @@ public class MainActivity extends AppCompatActivity {
         textViewTitle.startAnimation(fadeInAnimation);
         textViewQuote.startAnimation(fadeInAnimation);
         imageViewEulerPrincipal.startAnimation(fadeInAnimation);
+    }
+
+    public void selectQuote()
+    {
+        quotes = getResources().getStringArray(R.array.quotes_from_euler);
+        Random randomNumber = new Random();
+        int quoteNumber = randomNumber.nextInt(quotes.length);
+        String quoteToDisplay = quotes[quoteNumber];
+        textViewQuote.setText(quoteToDisplay);
     }
 
 

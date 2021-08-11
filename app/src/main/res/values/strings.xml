@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">euler I</string>
     <string name="title">euler I</string>
+    <string name="quote_place_holder">Logic is the foundation of the certainty of all the knowledge we acquire</string>
 </resources>
