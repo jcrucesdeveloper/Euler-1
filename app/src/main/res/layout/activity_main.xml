@@ -14,8 +14,8 @@
         android:layout_marginStart="180dp"
         android:layout_marginTop="24dp"
         android:layout_marginEnd="173dp"
-        android:fontFamily="monospace"
-        android:text="@string/title"
+        android:fontFamily="sans-serif-thin"
+        android:text="Euler I"
         android:textColor="@color/white"
         android:textSize="48sp"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
@@ -32,11 +32,11 @@
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
         android:alpha="0.7"
-        android:fontFamily="monospace"
+        android:fontFamily="serif"
         android:text='"Logic is the foundation of the certainty of all the knowledge we acquire"'
         android:textAlignment="center"
         android:textColor="@color/white"
-        android:textSize="14sp"
+        android:textSize="16sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -64,7 +64,9 @@
             android:layout_width="129dp"
             android:layout_height="135dp"
             android:layout_marginBottom="28dp"
-            app:srcCompat="@drawable/play_button" />
+            android:onClick="onClickListLevels"
+            app:srcCompat="@drawable/play_button"
+            tools:ignore="SpeakableTextPresentCheck" />
 
     </FrameLayout>
 
