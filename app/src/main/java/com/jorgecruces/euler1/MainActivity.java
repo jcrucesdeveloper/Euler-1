@@ -13,16 +13,15 @@ import android.widget.TextView;
 
 import java.util.Random;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity
+{
 
     TextView textViewQuote, textViewTitle;
     ImageView imageViewInfoButton, imageViewPlayButton,imageViewPlayButtonBackground,imageViewEulerPrincipal;
 
-    private String[] quotes;
-
-
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
@@ -54,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void selectQuote()
     {
-        quotes = getResources().getStringArray(R.array.quotes_from_euler);
+        String[] quotes = getResources().getStringArray(R.array.quotes_from_euler);
         Random randomNumber = new Random();
         int quoteNumber = randomNumber.nextInt(quotes.length);
         String quoteToDisplay = quotes[quoteNumber];
