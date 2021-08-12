@@ -5,7 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.Toast;
+
+import com.jorgecruces.euler1.ListLevel.CustomAdapter;
+import com.jorgecruces.euler1.ListLevel.LevelElement;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,6 +21,21 @@ public class ListLevels extends AppCompatActivity
     private ListView listViewLevels;
     private List<LevelElement> levelElementList;
 
+    public List<LevelElement> getLevelElements()
+    {
+        levelElementList = new ArrayList<>();
+        String[] titlesArray = getResources().getStringArray(R.array.levels_name);
+
+        int levelNumber = 1;
+        for (String title : titlesArray)
+        {
+            levelElementList.add(new LevelElement(title,Integer.toString(levelNumber)));
+            levelNumber++;
+        }
+
+        return levelElementList;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -24,15 +44,21 @@ public class ListLevels extends AppCompatActivity
 
         listViewLevels = (ListView) findViewById(R.id.listViewLevelElements);
 
-        levelElementList = new ArrayList<>();
-        levelElementList.add(new LevelElement("Jorge","1"));
-        levelElementList.add(new LevelElement("Jorge","2"));
-        levelElementList.add(new LevelElement("Jorge","3"));
-
-        CustomAdapter adapter = new CustomAdapter(this,levelElementList);
+        CustomAdapter adapter = new CustomAdapter(this,getLevelElements());
         listViewLevels.setAdapter(adapter);
 
+        listViewLevels.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
+            {
+                LevelElement element = levelElementList.get(i);
+                Toast.makeText(getBaseContext(), element.getLevelTitle(), Toast.LENGTH_SHORT).show();
+            }
+        });
+
     }
+
 
 
 

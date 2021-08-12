@@ -1,4 +1,4 @@
-package com.jorgecruces.euler1;
+package com.jorgecruces.euler1.ListLevel;
 
 public class LevelElement
 {

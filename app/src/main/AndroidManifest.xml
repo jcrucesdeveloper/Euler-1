@@ -10,17 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Euler1">
         <activity
+            android:name=".NumbersLevels"
+            android:exported="true" />
+        <activity
             android:name=".ListLevels"
             android:exported="true"
-            android:screenOrientation="portrait"
-
-            />
+            android:screenOrientation="portrait" />
         <activity
             android:name=".MainActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
-
-            >
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
