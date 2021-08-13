@@ -10,6 +10,7 @@
         <entry key="app/src/main/res/drawable/play_button_foreground.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/layout/activity_list_levels.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/activity_numbers_levels.xml" value="0.22" />
         <entry key="app/src/main/res/layout/list_element.xml" value="0.22" />
         <entry key="app/src/main/res/layout/list_view_element.xml" value="0.25" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/play_button.xml" value="0.22760416666666666" />
