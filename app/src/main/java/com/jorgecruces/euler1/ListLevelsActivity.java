@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.jorgecruces.euler1.ListLevel.CustomAdapter;
 import com.jorgecruces.euler1.ListLevel.LevelElement;
@@ -15,7 +14,7 @@ import com.jorgecruces.euler1.ListLevel.LevelElement;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListLevels extends AppCompatActivity
+public class ListLevelsActivity extends AppCompatActivity
 {
 
     private ListView listViewLevels;
@@ -62,7 +61,7 @@ public class ListLevels extends AppCompatActivity
 
     public void onClickGoToNumberLevel()
     {
-        Intent intent = new Intent(this, NumbersLevels.class);
+        Intent intent = new Intent(this, NumbersLevelsActivity.class);
         startActivity(intent);
     }
 

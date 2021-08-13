@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -39,7 +38,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickListLevels(View view)
     {
-        Intent intentListLevels = new Intent(getApplicationContext(), ListLevels.class);
+        Intent intentListLevels = new Intent(getApplicationContext(), ListLevelsActivity.class);
         startActivity(intentListLevels);
     }
 

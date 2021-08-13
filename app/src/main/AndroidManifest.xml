@@ -10,10 +10,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Euler1">
         <activity
-            android:name=".NumbersLevels"
+            android:name=".QuestionActivity"
+            android:screenOrientation="portrait"
             android:exported="true" />
         <activity
-            android:name=".ListLevels"
+            android:name=".NumbersLevelsActivity"
+            android:screenOrientation="portrait"
+            android:exported="true" />
+        <activity
+            android:name=".ListLevelsActivity"
             android:exported="true"
             android:screenOrientation="portrait" />
         <activity

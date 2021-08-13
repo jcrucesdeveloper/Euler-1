@@ -2,6 +2,7 @@ package com.jorgecruces.euler1;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,7 +10,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
-public class NumbersLevels extends AppCompatActivity {
+public class NumbersLevelsActivity extends AppCompatActivity {
 
     private TextView textViewNumberLevel;
 
@@ -32,6 +33,14 @@ public class NumbersLevels extends AppCompatActivity {
             if(v instanceof TextView)
             {
                 ((TextView) v).setText(Integer.toString(startNumber));
+                v.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        Intent intent = new Intent(getApplicationContext(),QuestionActivity.class);
+                        startActivity(intent);
+
+                    }
+                });
                 startNumber++;
             }
 
