@@ -53,19 +53,23 @@ public class ListLevels extends AppCompatActivity
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l)
             {
                 LevelElement element = levelElementList.get(i);
-                Toast.makeText(getBaseContext(), element.getLevelTitle(), Toast.LENGTH_SHORT).show();
+                onClickGoToNumberLevel();
             }
         });
 
     }
 
 
+    public void onClickGoToNumberLevel()
+    {
+        Intent intent = new Intent(this, NumbersLevels.class);
+        startActivity(intent);
+    }
 
 
     public void onClickGoBackToMainScreen(View view)
     {
-        Intent intentGoBack = new Intent(this, MainActivity.class);
-        startActivity(intentGoBack);
+        finish();
     }
 
 }
