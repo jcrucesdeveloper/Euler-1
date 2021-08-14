@@ -55,9 +55,11 @@ public class NumbersLevelsActivity extends AppCompatActivity {
                 v.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
+                        String levelNumber = ((TextView) v).getText().toString();
+                        // TODO
                         Intent intent = new Intent(getApplicationContext(),QuestionActivity.class);
+                        intent.putExtra("lol", intent);
                         startActivity(intent);
-
                     }
                 });
                 startNumber++;
