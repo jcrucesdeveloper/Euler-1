@@ -5,11 +5,13 @@ public class LevelElement
 
     private String levelNumber;
     private String levelTitle;
+    private boolean locked;
 
 
-    public LevelElement(String levelTitle, String levelNumber) {
+    public LevelElement(String levelTitle, String levelNumber,boolean locked) {
         this.levelTitle = levelTitle;
         this.levelNumber = levelNumber;
+        this.locked = locked;
     }
 
     public String getLevelTitle() {
@@ -28,5 +30,8 @@ public class LevelElement
         this.levelNumber = levelNumber;
     }
 
+    public void setLocked(boolean locked) { this.locked = locked;}
+
+    public boolean isLocked() {return this.locked;}
 
 }

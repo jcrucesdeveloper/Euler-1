@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jorgecruces.euler1.R;
@@ -49,8 +50,19 @@ public class CustomAdapter extends BaseAdapter
         }
 
         TextView textViewLevelTitle, textViewLevelNumber;
+
         textViewLevelTitle = (TextView) view.findViewById(R.id.textViewLevelTitle);
         textViewLevelNumber = (TextView) view.findViewById(R.id.textViewLevelNumber);
+        ImageView imageViewLocked = (ImageView) view.findViewById(R.id.imageViewLock);
+
+        if(levelElement.isLocked())
+        {
+            imageViewLocked.setVisibility(View.VISIBLE);
+        }
+        else
+        {
+            imageViewLocked.setVisibility(View.INVISIBLE);
+        }
 
         textViewLevelTitle.setText(levelElement.getLevelTitle());
         textViewLevelNumber.setText(levelElement.getLevelNumber());
