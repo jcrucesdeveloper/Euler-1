@@ -94,7 +94,7 @@
             app:rowCount="2">
 
             <TextView
-                android:id="@+id/button3"
+                android:id="@+id/textViewAlternative1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -113,7 +113,7 @@
                 app:layout_rowWeight="1" />
 
             <TextView
-                android:id="@+id/button4"
+                android:id="@+id/textViewAlternative2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -134,7 +134,7 @@
                 app:layout_rowWeight="1" />
 
             <TextView
-                android:id="@+id/button5"
+                android:id="@+id/textViewAlternative3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
@@ -152,7 +152,7 @@
                 app:layout_rowWeight="1" />
 
             <TextView
-                android:id="@+id/button6"
+                android:id="@+id/textViewAlternative4"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_margin="5dp"
