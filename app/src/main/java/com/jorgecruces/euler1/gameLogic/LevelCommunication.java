@@ -6,6 +6,8 @@ public class LevelCommunication
     public static final String LEVEL_NUMBER_NUMBERS_KEY = "LEVEL_NUMBER_NUMBERS_KEY";
 
 
+    public static final String QUESTION_NUMBER_KEY = "QUESTION_NUMBER_KEY";
+
     public static int getStartNumberUsingLevelNumber(int levelNumber)
     {
         switch (levelNumber)
