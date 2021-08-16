@@ -1,6 +1,7 @@
 package com.jorgecruces.euler1;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -11,12 +12,16 @@ import com.jorgecruces.euler1.gameLogic.XmlParserActivity;
 
 import org.w3c.dom.Text;
 
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import io.github.kexanie.library.MathView;
 
 
-public class QuestionActivity extends XmlParserActivity {
+public class QuestionActivity extends XmlParserActivity
+{
 
     private MathView mathView;
     private String questionNumber;
@@ -25,8 +30,11 @@ public class QuestionActivity extends XmlParserActivity {
     private List<Question> questionList;
     private Question questionLevel;
 
+    private String correctAlternative;
+
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState)
+    {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
@@ -48,12 +56,14 @@ public class QuestionActivity extends XmlParserActivity {
             Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
         }
 
+        correctAlternative = questionLevel.getCorrectAlternative();
+
+        // Title
+        TextView currentLevelNumber = (TextView) findViewById(R.id.textViewCurrentLevelNumber);
+        currentLevelNumber.setText(questionNumber);
         setUpQuestion();
         setUpAlternatives();
-
     }
-
-
 
     public void setUpQuestion()
     {
@@ -71,12 +81,51 @@ public class QuestionActivity extends XmlParserActivity {
         textViewAlternative3 = (TextView) findViewById(R.id.textViewAlternative3);
         textViewAlternative4 = (TextView) findViewById(R.id.textViewAlternative4);
 
-        textViewAlternative1.setText(questionLevel.getAlternative1());
-        textViewAlternative2.setText(questionLevel.getAlternative2());
-        textViewAlternative3.setText(questionLevel.getAlternative3());
-        textViewAlternative4.setText(questionLevel.getCorrectAlternative());
+        List<TextView> textViewList = new ArrayList<TextView>();
+
+        textViewList.add(textViewAlternative1);
+        textViewList.add(textViewAlternative2);
+        textViewList.add(textViewAlternative3);
+        textViewList.add(textViewAlternative4);
+
+        String alternative1,alternative2,alternative3,alternative4;
+        alternative1 = questionLevel.getAlternative1();
+        alternative2 = questionLevel.getAlternative2();
+        alternative3 = questionLevel.getAlternative3();
+        alternative4 = questionLevel.getCorrectAlternative();
+
+        List<String> alternativesList = new ArrayList<String>();
+
+        alternativesList.add(alternative1);
+        alternativesList.add(alternative2);
+        alternativesList.add(alternative3);
+        alternativesList.add(alternative4);
+
+        Collections.shuffle(alternativesList);
+
+        for(int i = 0; i < textViewList.size(); i++)
+        {
+            TextView textViewTemp = textViewList.get(i);
+            String  alternativeTemp = alternativesList.get(i);
+            textViewTemp.setText(alternativeTemp);
+        }
+
+    }
 
 
+    public void onClickAlternative(View view)
+    {
+        TextView textViewAlternative = (TextView) view;
+        String stringAlternative = textViewAlternative.getText().toString();
 
+        if(stringAlternative.equals(correctAlternative))
+        {
+            Toast.makeText(this, "Correct answer", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
+
+        }
     }
 }

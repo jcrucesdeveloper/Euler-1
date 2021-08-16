@@ -26,7 +26,7 @@ public class NumbersLevelsActivity extends AppCompatActivity {
 
         // Set title
         levelTitle = getIntent().getStringExtra(LevelCommunication.LEVEL_TITLE_NUMBERS_KEY);
-        textViewLevelTitleNumbers = (TextView) findViewById(R.id.textViewLevelTitleNumbers);
+        textViewLevelTitleNumbers = (TextView) findViewById(R.id.textViewLevelLabel);
         textViewLevelTitleNumbers.setText(levelTitle);
 
         // levelNumber
