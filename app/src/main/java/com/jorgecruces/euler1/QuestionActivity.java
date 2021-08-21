@@ -45,7 +45,7 @@ public class QuestionActivity extends XmlParserActivity
         questionList = getQuestionList();
 
         // Question if something went wrong
-        questionLevel = new Question("question","1","2","3","4");
+        questionLevel = new Question("question","1","2","3","4","");
 
         try
         {
@@ -58,9 +58,11 @@ public class QuestionActivity extends XmlParserActivity
 
         correctAlternative = questionLevel.getCorrectAlternative();
 
-        // Title
+        
         TextView currentLevelNumber = (TextView) findViewById(R.id.textViewCurrentLevelNumber);
         currentLevelNumber.setText(questionNumber);
+
+
         setUpQuestion();
         setUpAlternatives();
     }

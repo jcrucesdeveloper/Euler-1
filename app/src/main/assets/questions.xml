@@ -11,4 +11,69 @@
         <correctAlternative>4</correctAlternative>
     </question>
 
+    <question number="2">
+        <questionLabel>$$-3-(-7)*5$$</questionLabel>
+        <alternative1>-20</alternative1>
+        <alternative2>-38</alternative2>
+        <alternative3>-50</alternative3>
+        <correctAlternative>32</correctAlternative>
+    </question>
+
+    <question number="3">
+        <questionLabel>$$| |-6|-|-6| |$$</questionLabel>
+        <alternative1>-12</alternative1>
+        <alternative2>6</alternative2>
+        <alternative3>12</alternative3>
+        <correctAlternative>0</correctAlternative>
+    </question>
+
+    <question number="4">
+        <questionLabel>$$6-3*8-32/4$$</questionLabel>
+        <alternative1>-14</alternative1>
+        <alternative2>0</alternative2>
+        <alternative3>3</alternative3>
+        <correctAlternative>-26</correctAlternative>
+    </question>
+
+    <question number="5">
+        <questionLabel>$$[-5+(-3)*7]/(-2)$$</questionLabel>
+        <alternative1>-28</alternative1>
+        <alternative2>-13</alternative2>
+        <alternative3>-28</alternative3>
+        <correctAlternative>13</correctAlternative>
+    </question>
+
+    <question number="6">
+        <questionLabel>$$(-2)*2*(-2)*(-2)*2$$</questionLabel>
+        <alternative1>16</alternative1>
+        <alternative2>-16</alternative2>
+        <alternative3>32</alternative3>
+        <correctAlternative>-32</correctAlternative>
+    </question>
+
+    <question number="7">
+        <questionLabel>$$-2*[3-{5-2*(8-16)}]$$</questionLabel>
+        <alternative1>-54</alternative1>
+        <alternative2>-20</alternative2>
+        <alternative3>54</alternative3>
+        <correctAlternative>36</correctAlternative>
+    </question>
+
+    <question number="8">
+        <questionLabel>a</questionLabel>
+        <alternative1>a</alternative1>
+        <alternative2>a</alternative2>
+        <alternative3>a</alternative3>
+        <correctAlternative>a</correctAlternative>
+    </question>
+
+    <question number="9">
+        <questionLabel>$$18-(-30)/(-2)+(-2)*(-1)$$</questionLabel>
+        <alternative1>25</alternative1>
+        <alternative2>9</alternative2>
+        <alternative3>-5</alternative3>
+        <correctAlternative>5</correctAlternative>
+    </question>
+
+
 </questions>

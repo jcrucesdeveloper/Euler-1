@@ -99,6 +99,20 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:text=""></io.github.kexanie.library.MathView>
 
+            <TextView
+                android:id="@+id/textViewQuestionTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="55dp"
+                android:fontFamily="serif"
+                android:text="questionTitle"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

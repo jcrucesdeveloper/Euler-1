@@ -43,23 +43,18 @@ public class XmlParserActivity extends AppCompatActivity
                 Node node = nList.item(i);
                 Element explorer = (Element) node;
 
-                Node nodeQuestionLabel,nodeAlternative1,nodeAlternative2,nodeAlternative3,nodeCorrectAlternative;
+                String questionLabel,questionTitle, alternative1,alternative2,alternative3,correctAlternative;
 
-                nodeQuestionLabel = explorer.getElementsByTagName("questionLabel").item(0).getFirstChild();
-                nodeAlternative1 = explorer.getElementsByTagName("alternative1").item(0).getFirstChild();
-                nodeAlternative2 = explorer.getElementsByTagName("alternative2").item(0).getFirstChild();
-                nodeAlternative3 = explorer.getElementsByTagName("alternative3").item(0).getFirstChild();
-                nodeCorrectAlternative = explorer.getElementsByTagName("correctAlternative").item(0).getFirstChild();
+                questionTitle = getStringUsingTag("questionTitle",explorer);
+                questionLabel = getStringUsingTag("questionLabel",explorer);
+                alternative1 = getStringUsingTag("alternative1",explorer);
+                alternative2 = getStringUsingTag("alternative2",explorer);
+                alternative3 = getStringUsingTag("alternative3",explorer);
+                correctAlternative = getStringUsingTag("correctAlternative",explorer);
 
-                String questionLabel, alternative1,alternative2,alternative3,correctAlternative;
+                if(null == questionTitle) questionTitle = "";
 
-                questionLabel = nodeQuestionLabel.getNodeValue();
-                alternative1 = nodeAlternative1.getNodeValue();
-                alternative2 = nodeAlternative2.getNodeValue();
-                alternative3 = nodeAlternative3.getNodeValue();
-                correctAlternative = nodeCorrectAlternative.getNodeValue();
-
-                Question questionTemp = new Question(questionLabel,alternative1,alternative2,alternative3,correctAlternative);
+                Question questionTemp = new Question(questionLabel,alternative1,alternative2,alternative3,correctAlternative,questionTitle);
                 questionList.add(questionTemp);
             }
 
@@ -72,6 +67,22 @@ public class XmlParserActivity extends AppCompatActivity
         }
 
         return questionList;
+    }
+
+    public String getStringUsingTag(String tag, Element explorer)
+    {
+        try
+        {
+
+            Node nodeTag = explorer.getElementsByTagName(tag).item(0).getFirstChild();
+            if(null == nodeTag) return "";
+
+            return nodeTag.getNodeValue();
+        }
+        catch (NullPointerException e)
+        {
+            return "";
+        }
     }
 
 }
