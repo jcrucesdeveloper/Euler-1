@@ -58,10 +58,14 @@ public class QuestionActivity extends XmlParserActivity
 
         correctAlternative = questionLevel.getCorrectAlternative();
 
-        
-        TextView currentLevelNumber = (TextView) findViewById(R.id.textViewCurrentLevelNumber);
-        currentLevelNumber.setText(questionNumber);
 
+        // Question Number
+        TextView textViewCurrentLevelNumber = (TextView) findViewById(R.id.textViewCurrentLevelNumber);
+        textViewCurrentLevelNumber.setText(questionNumber);
+
+        // Question Title (Optional)
+        TextView textViewQuestionTile = (TextView) findViewById(R.id.textViewQuestionTitle);
+        textViewQuestionTile.setText(questionLevel.getQuestionTitle());
 
         setUpQuestion();
         setUpAlternatives();
@@ -70,8 +74,15 @@ public class QuestionActivity extends XmlParserActivity
     public void setUpQuestion()
     {
         String questionLabel = questionLevel.getQuestionLabel();
+        String questionFontSize = "30";
+
+        if(questionLabel.length() > 14) questionFontSize = "20";
+        if(questionLabel.length() > 21) questionFontSize = "18";
+
+
+
         mathView = (MathView) findViewById(R.id.mathView);
-        mathView.setText("<div style=\"font-size:30px;\"> $$" + questionLabel + "$$ </div>");
+        mathView.setText("<div style=\"font-size:" + questionFontSize + "px;\"> $$" + questionLabel + "$$ </div>");
     }
 
     public void setUpAlternatives()
