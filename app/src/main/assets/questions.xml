@@ -20,6 +20,26 @@
     </question>
 
     <question number="3">
+        <questionLabel>6*12*2</questionLabel>
+        <alternative1>124</alternative1>
+        <alternative2>134</alternative2>
+        <alternative3>160</alternative3>
+        <correctAlternative>144</correctAlternative>
+    </question>
+
+    <question number="4">
+        <questionLabel></questionLabel>
+    </question>
+
+    <question>
+        <questionLabel>(15*4) + 8</questionLabel>
+        <alternative1>60</alternative1>
+        <alternative2>54</alternative2>
+        <alternative3>78</alternative3>
+        <correctAlternative>68</correctAlternative>
+    </question>
+
+    <question number="3">
         <questionLabel>| |-6|-|-6| |</questionLabel>
         <alternative1>-12</alternative1>
         <alternative2>6</alternative2>
@@ -60,11 +80,11 @@
     </question>
 
     <question number="8">
-        <questionLabel>a</questionLabel>
-        <alternative1>a</alternative1>
-        <alternative2>a</alternative2>
-        <alternative3>a</alternative3>
-        <correctAlternative>a</correctAlternative>
+        <questionTitle>The sum of three consecutives number is 0. What is the largest number?</questionTitle>
+        <alternative1>-1</alternative1>
+        <alternative2>-2</alternative2>
+        <alternative3>3</alternative3>
+        <correctAlternative>1</correctAlternative>
     </question>
 
     <question number="9">
@@ -74,6 +94,91 @@
         <alternative3>-5</alternative3>
         <correctAlternative>5</correctAlternative>
     </question>
+
+    <question number="10">
+        <questionTitle>m and n are consecutives numbers</questionTitle>
+        <questionLabel>m &lt; n, so n - m is? </questionLabel>
+        <alternative1>-1</alternative1>
+        <alternative2>0</alternative2>
+        <alternative3>5</alternative3>
+        <correctAlternative>1</correctAlternative>
+    </question>
+
+    <question number="11">
+        <questionLabel>4,3 + 5,8</questionLabel>
+        <alternative1>9,2</alternative1>
+        <alternative2>10,8</alternative2>
+        <alternative3>11,1</alternative3>
+        <correctAlternative>10,1</correctAlternative>
+    </question>
+
+    <question number="12">
+        <questionLabel>(-3)^2 - (-3)^3</questionLabel>
+        <alternative1>-36</alternative1>
+        <alternative2>-15</alternative2>
+        <alternative3>-18</alternative3>
+        <correctAlternative>36</correctAlternative>
+    </question>
+
+    <question number="13">
+        <questionTitle>The square of </questionTitle>
+        <questionLabel>(1/3 + 3)</questionLabel>
+        <alternative1>82/9</alternative1>
+        <alternative2>8/6</alternative2>
+        <alternative3>16/9</alternative3>
+        <correctAlternative>100/9</correctAlternative>
+    </question>
+
+    <question number="14">
+        <questionTitle>n = 3</questionTitle>
+        <questionLabel>n^2 - n/3 + 3n</questionLabel>
+        <alternative1>18</alternative1>
+        <alternative2>9</alternative2>
+        <alternative3>9</alternative3>
+        <correctAlternative>17</correctAlternative>
+    </question>
+
+    <question number="15">
+        <questionLabel>4^-2 + 2^-3 - 2^-4</questionLabel>
+        <alternative1>1/4</alternative1>
+        <alternative2>1/6</alternative2>
+        <alternative3>-8</alternative3>
+        <correctAlternative>1/8</correctAlternative>
+    </question>
+
+
+    <question number="16">
+        <questionLabel>((1/5)^2 + 1/5)/(1/5)^-1</questionLabel>
+        <alternative1>1/25</alternative1>
+        <alternative2>2</alternative2>
+        <alternative3>6/5</alternative3>
+        <correctAlternative>6/125</correctAlternative>
+    </question>
+
+    <question number="17">
+        <questionTitle>n = ?</questionTitle>
+        <questionLabel>2^4 * 3^8 = n * 6^4 </questionLabel>
+        <alternative1>12</alternative1>
+        <alternative2>27</alternative2>
+        <alternative3>54</alternative3>
+        <correctAlternative>81</correctAlternative>
+    </question>
+
+    <question number="18">
+
+        <questionLabel>(4^302 * 3^302)/(6^302 * 2^302)</questionLabel>
+        <alternative1>2</alternative1>
+        <alternative2>12</alternative2>
+        <alternative3>1/2</alternative3>
+        <correctAlternative>1</correctAlternative>
+    </question>
+
+    <question number="19">
+        <questionLabel></questionLabel>u
+
+    </question>
+
+
 
 
 </questions>
