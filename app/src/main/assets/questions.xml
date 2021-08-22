@@ -497,6 +497,54 @@
         <correctAlternative>10</correctAlternative>
     </question>
 
+    <question number="61">
+        <questionLabel>-8p +86 = p + 5</questionLabel>
+        <alternative1>10</alternative1>
+        <alternative2>13</alternative2>
+        <alternative3>8</alternative3>
+        <correctAlternative>9</correctAlternative>
+    </question>
+
+    <question number="62">
+        <questionLabel>-6a + 58 = 2a - 6</questionLabel>
+        <alternative1>9</alternative1>
+        <alternative2>16</alternative2>
+        <alternative3>5</alternative3>
+        <correctAlternative>8</correctAlternative>
+    </question>
+
+    <question number="63">
+        <questionLabel>-5v + 41 = -1 +2v</questionLabel>
+        <alternative1>6</alternative1>
+        <alternative2>14</alternative2>
+        <alternative3>4</alternative3>
+        <correctAlternative>7</correctAlternative>
+    </question>
+
+    <question number="64">
+        <questionLabel>-9u + 75 = -u - 5</questionLabel>
+        <alternative1>8</alternative1>
+        <alternative2>9</alternative2>
+        <alternative3>12</alternative3>
+        <correctAlternative>10</correctAlternative>
+    </question>
+
+    <question number="65">
+        <questionLabel>11 +2b = 37 - 2b</questionLabel>
+        <correctAlternative>12</correctAlternative>
+        <alternative1>8</alternative1>
+        <alternative2>14</alternative2>
+        <alternative3>33/4</alternative3>
+    </question>
+
+    <question number="66">
+        <questionLabel>9c - 31 = 2 - 2c</questionLabel>
+        <alternative1>11</alternative1>
+        <alternative2>121</alternative2>
+        <alternative3>22</alternative3>
+        <correctAlternative>3</correctAlternative>
+    </question>
+
     <question number="17">
         <questionTitle>n = ?</questionTitle>
         <questionLabel>2^4 * 3^8 = n * 6^4 </questionLabel>
