@@ -103,7 +103,52 @@
 
     <question>
 
+        <questionLabel>32*3 - 8</questionLabel>
+        <alternative1>98</alternative1>
+        <alternative2>89</alternative2>
+        <alternative3>87</alternative3>
+        <correctAlternative>88</correctAlternative>
+    </question>
 
+    <question>
+        <questionLabel>24*2 + 15*3</questionLabel>
+        <alternative1>94</alternative1>
+        <alternative2>83</alternative2>
+        <alternative3>96</alternative3>
+        <correctAlternative>93</correctAlternative>
+    </question>
+
+    <question>
+        <questionLabel>36*3</questionLabel>
+        <alternative1>112</alternative1>
+        <alternative2>103</alternative2>
+        <alternative3>109</alternative3>
+        <correctAlternative>108</correctAlternative>
+    </question>
+
+    <question>
+        <questionLabel>43*3 + 9</questionLabel>
+        <alternative1>136</alternative1>
+        <alternative2>128</alternative2>
+        <alternative3>142</alternative3>
+        <correctAlternative>138</correctAlternative>
+    </question>
+
+    <question>
+        <questionLabel>(-4)*5 + 28 - 7 </questionLabel>
+        <alternative1>41</alternative1>
+        <alternative2>3</alternative2>
+        <alternative3>-2</alternative3>
+        <correctAlternative>1</correctAlternative>
+    </question>
+
+
+    <question>
+        <questionLabel>83*3</questionLabel>
+        <alternative1>251</alternative1>
+        <alternative2>259</alternative2>
+        <alternative3>247</alternative3>
+        <correctAlternative>249</correctAlternative>
     </question>
 
 
@@ -123,7 +168,45 @@
         <correctAlternative>144</correctAlternative>
     </question>
 
+    <question>
+        <questionLabel>(-3)^2 + 18</questionLabel>
+        <alternative1>9</alternative1>
+        <alternative2>29</alternative2>
+        <alternative2>18</alternative2>
+        <correctAlternative>27</correctAlternative>
+    </question>
 
+    <question>
+        <questionLabel>(-2)^3 + 16</questionLabel>
+        <alternative1>24</alternative1>
+        <alternative2>16</alternative2>
+        <alternative3>14</alternative3>
+        <correctAlternative>8</correctAlternative>
+    </question>
+
+    <question>
+        <questionLabel>4 + 6^2</questionLabel>
+        <alternative1>42</alternative1>
+        <alternative2>38</alternative2>
+        <alternative3>36</alternative3>
+        <correctAlternative>40</correctAlternative>
+    </question>
+
+    <question>
+        <questionLabel>[12*4 + (5-7)^3]/4</questionLabel>
+        <alternative1>22</alternative1>
+        <alternative2>1</alternative2>
+        <alternative3>36</alternative3>
+        <correctAlternative>10</correctAlternative>
+    </question>
+
+    <question>
+        <questionLabel>(60*3)/6 + 21*2</questionLabel>
+        <alternative1>65</alternative1>
+        <alternative2>68</alternative2>
+        <alternative3>81</alternative3>
+        <correctAlternative>72</correctAlternative>
+    </question>
 
     <question>
         <questionLabel>7^2 - 1^2</questionLabel>
@@ -292,10 +375,7 @@
         <correctAlternative>1</correctAlternative>
     </question>
 
-    <question number="19">
-        <questionLabel></questionLabel>u
 
-    </question>
 
 
 
