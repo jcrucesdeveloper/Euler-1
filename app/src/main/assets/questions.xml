@@ -817,7 +817,185 @@
         <correctAlternative>-3</correctAlternative>
     </question>
 
-    
+    <!-- 101-150 CATEGORY QUADRATICS FACTORISING -->
+
+    <question number="101">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>v^2 - v - 20</questionLabel>
+        <alternative1>(v - 4)(v + 5)</alternative1>
+        <alternative2>(v - 7)(v + 8)</alternative2>
+        <alternative3>(v + 3)(v - 5)</alternative3>
+        <correctAlternative>(v - 5)(v + 4)</correctAlternative>
+    </question>
+
+    <question number="102">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>w^2 - 2w - 35</questionLabel>
+        <alternative1>(w - 35)(w + 1)</alternative1>
+        <alternative2>(w - 8)(w + 2)</alternative2>
+        <alternative3>(w + 9)(w - 3)</alternative3>
+        <correctAlternative>(w - 7)(w + 5)</correctAlternative>
+    </question>
+
+    <question number="103">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>p^2 + 7p - 8</questionLabel>
+        <alternative1>(p - 8)(p + 1)</alternative1>
+        <alternative2>(p + 11)(p - 4)</alternative2>
+        <alternative3>(p - 11)(p + 11)</alternative3>
+        <correctAlternative>(p - 1)(p + 8)</correctAlternative>
+    </question>
+
+    <question number="104">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>n^2 + n - 6</questionLabel>
+        <alternative1>(n + 4)(n - 5)</alternative1>
+        <alternative2>(n + 1)(n + 3)</alternative2>
+        <alternative3>(n - 5)(n + 4)</alternative3>
+        <correctAlternative>(n - 2)(n + 3)</correctAlternative>
+    </question>
+
+    <question number="105">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>t^2 - 5t - 6</questionLabel>
+        <alternative1>(t - 10)(t + 5)</alternative1>
+        <alternative2>(t + 7)(t - 2)</alternative2>
+        <alternative3>(t - 3)(t - 3)</alternative3>
+        <correctAlternative>(t - 6)(t + 1)</correctAlternative>
+    </question>
+
+    <question number="106">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>c^2 + 3c - 28</questionLabel>
+        <alternative1>(c - 2)(c + 6)</alternative1>
+        <alternative2>(c + 5)(c - 12)</alternative2>
+        <correctAlternative>(c - 4)(c + 7)</correctAlternative>
+    </question>
+
+    <question number="107">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>x^2 - 9x + 14</questionLabel>
+        <alternative1>(x + 7)(x - 2)</alternative1>
+        <alternative2>(x + 7)(x + 2)</alternative2>
+        <alternative3>(x - 6)(x + 7)</alternative3>
+        <correctAlternative>(x - 7)(x - 2)</correctAlternative>
+    </question>
+
+    <question number="108">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>e^2 - 14e + 48</questionLabel>
+        <alternative1>(e + 8)(e - 4)</alternative1>
+        <alternative2>(e - 2)(e + 12)</alternative2>
+        <alternative3>(e - 4)(e - 6)</alternative3>
+        <correctAlternative>(e - 6)(e - 8)</correctAlternative>
+    </question>
+
+    <question number="109">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>w^2 - 9w + 14</questionLabel>
+        <alternative1>(w + 2)(w + 9)</alternative1>
+        <alternative2>(w - 2)(w - 11)</alternative2>
+        <alternative3>(w + 4)(w - 13)</alternative3>
+        <correctAlternative>(w - 7)(w - 2)</correctAlternative>
+    </question>
+
+    <question number="110">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>r^2 - 12r + 11</questionLabel>
+        <alternative1>(r - 12)(r + 12)</alternative1>
+        <alternative2>(r - 12)(r + 1)</alternative2>
+        <alternative3>(r - 12)(r - 1)</alternative3>
+        <correctAlternative>(r - 11)(r - 1)</correctAlternative>
+    </question>
+
+    <question number="111">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>d^2 - 15d + 50</questionLabel>
+        <alternative1>(d - 10)(d + 5)</alternative1>
+        <alternative2>(d + 10)(d - 5)</alternative2>
+        <alternative3>(d - 5)(d + 25)</alternative3>
+        <correctAlternative>(d - 10)(d - 5)</correctAlternative>
+    </question>
+
+    <question number="112">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>u^2 - 21u + 110</questionLabel>
+        <alternative1>(u - 10)(u + 10)</alternative1>
+        <alternative2>(u - 11)(u - 11)</alternative2>
+        <alternative3>(u - 13)(u + 4)</alternative3>
+        <correctAlternative>(u - 10)(u - 11)</correctAlternative>
+    </question>
+
+    <question number="113">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>j^2 -9j + 8</questionLabel>
+        <alternative1>(j - 12)(j + 3)</alternative1>
+        <alternative2>(j - 3)(j + 12)</alternative2>
+        <alternative3>(j + 1)(j + 8)</alternative3>
+        <correctAlternative>(j - 1)(j - 8)</correctAlternative>
+    </question>
+
+    <question number="114">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>p^2 - 19p + 88</questionLabel>
+        <alternative1>(p + 11)(p - 13)</alternative1>
+        <alternative2>(p + 4)(p - 12)</alternative2>
+        <alternative3>(p - 4)(p + 12)</alternative3>
+        <correctAlternative>(p - 8)(p - 11)</correctAlternative>
+    </question>
+
+    <question number="115">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>x^2 - 22x + 121</questionLabel>
+        <alternative1>(x + 11)(x + 11</alternative1>
+        <alternative2>(x + 11)(x - 11)</alternative2>
+        <alternative3>(x + 8)(x - 7)</alternative3>
+        <correctAlternative>(x - 11)(x - 11)</correctAlternative>
+    </question>
+
+    <question number="116">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>a^2 - 6a + 8</questionLabel>
+        <alternative1>(a - 8)(a + 2)</alternative1>
+        <alternative2>(a - 6)(a + 4)</alternative2>
+        <alternative3>(a + 2)(a - 4)</alternative3>
+        <correctAlternative>(a - 2)(a - 4)</correctAlternative>
+    </question>
+
+    <question number="117">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>t^2 - 14t + 33</questionLabel>
+        <alternative1>(t - 4)(t + 5)</alternative1>
+        <alternative2>(t - 11)(t + 3)</alternative2>
+        <alternative3>(t - 4)(t + 3)</alternative3>
+        <correctAlternative>(t - 11)(t - 3)</correctAlternative>
+    </question>
+
+    <question number="118">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>p^2 - 13p + 36</questionLabel>
+        <alternative1>(p - 5)(p - 4)</alternative1>
+        <alternative2>(p - 8)(p - 6)</alternative2>
+        <correctAlternative>(p - 4)(p - 9)</correctAlternative>
+    </question>
+
+    <question number="119">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>u^2 -14u + 49</questionLabel>
+        <alternative1>(u - 9)(u + 5)</alternative1>
+        <alternative2>(u + 5)(u + 9)</alternative2>
+        <alternative3>(u - 6)(u - 7)</alternative3>
+        <correctAlternative>(u - 7)(u - 7)</correctAlternative>
+    </question>
+
+    <question number="120">
+        <questionTitle>Factorise: </questionTitle>
+        <questionLabel>t^2 - 15t + 56</questionLabel>
+        <alternative1>(t + 8)(t + 7)</alternative1>
+        <alternative2>(t + 5)(t + 12)</alternative2>
+        <alternative3>(t - 5)(t - 12)</alternative3>
+        <correctAlternative>(t - 8)(t - 7)</correctAlternative>
+    </question>
 
 
 </questions>

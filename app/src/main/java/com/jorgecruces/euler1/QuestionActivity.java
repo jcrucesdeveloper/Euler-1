@@ -1,6 +1,7 @@
 package com.jorgecruces.euler1;
 
 import android.os.Bundle;
+import android.util.TypedValue;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -119,8 +120,15 @@ public class QuestionActivity extends XmlParserActivity
         for(int i = 0; i < textViewList.size(); i++)
         {
             TextView textViewTemp = textViewList.get(i);
-            String  alternativeTemp = alternativesList.get(i);
+            String alternativeTemp = alternativesList.get(i);
             textViewTemp.setText(alternativeTemp);
+
+            // Resize alternative
+            if(alternativeTemp.length() > 10)
+            {
+                textViewTemp.setTextSize(TypedValue.COMPLEX_UNIT_SP,28f);
+
+            }
         }
 
     }
