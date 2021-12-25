@@ -5,7 +5,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
     <TextView
         android:id="@+id/textViewTitle"
@@ -57,6 +57,7 @@
             android:layout_width="133dp"
             android:layout_height="137dp"
             android:layout_marginBottom="24dp"
+            android:onClick="onClickNextActivityNumbersLevel"
             app:srcCompat="@drawable/play_button_background" />
 
         <ImageView
@@ -64,7 +65,6 @@
             android:layout_width="129dp"
             android:layout_height="135dp"
             android:layout_marginBottom="28dp"
-            android:onClick="onClickListLevels"
             app:srcCompat="@drawable/play_button"
             tools:ignore="SpeakableTextPresentCheck" />
 

@@ -1,4 +1,4 @@
-package com.jorgecruces.euler1;
+package com.jorgecruces.euler1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,35 +9,27 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jorgecruces.euler1.gameLogic.LevelCommunication;
+import com.jorgecruces.euler1.R;
 
 
+/**
+ * Activity with the number levels (1-300)
+ */
 public class NumbersLevelsActivity extends AppCompatActivity {
 
     private TextView textViewLevelTitleNumbers;
-    private String levelTitle;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_numbers_levels);
 
-
         // Set title
-        levelTitle = getIntent().getStringExtra(LevelCommunication.LEVEL_TITLE_NUMBERS_KEY);
         textViewLevelTitleNumbers = (TextView) findViewById(R.id.textViewLevelLabel);
-        textViewLevelTitleNumbers.setText(levelTitle);
+        textViewLevelTitleNumbers.setText("Euler 1");
 
-        // levelNumber
-        int levelNumber = getIntent().getIntExtra(LevelCommunication.LEVEL_NUMBER_NUMBERS_KEY,0);
-        int startNumber = LevelCommunication.getStartNumberUsingLevelNumber(levelNumber);
-
-
-
-        // Put numbers
         ViewGroup gridLayout = (ViewGroup) findViewById(R.id.gridLayoutNumbers);
-        changeTextViewsInsideViewGroup(gridLayout,startNumber);
+        changeTextViewsInsideViewGroup(gridLayout,0);
 
     }
 

@@ -1,22 +1,18 @@
-package com.jorgecruces.euler1;
+package com.jorgecruces.euler1.activities;
 
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
-import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.jorgecruces.euler1.gameLogic.LevelCommunication;
+import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.gameLogic.Question;
 import com.jorgecruces.euler1.gameLogic.XmlParserActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 import io.github.kexanie.library.MathView;
 

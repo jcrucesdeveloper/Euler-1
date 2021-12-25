@@ -1,4 +1,4 @@
-package com.jorgecruces.euler1;
+package com.jorgecruces.euler1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -10,8 +10,13 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.jorgecruces.euler1.R;
+
 import java.util.Random;
 
+/**
+ * Entry point of the App, the screen with Euler image and Play Button
+ */
 public class MainActivity extends AppCompatActivity
 {
 
@@ -24,24 +29,35 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        // Title and Quote
         textViewQuote = (TextView) findViewById(R.id.textViewQuote);
         textViewTitle = (TextView) findViewById(R.id.textViewTitle);
 
+        // InfoButton, PlayButton, PlayButtonBackground(? and Euler image
         imageViewInfoButton = (ImageView) findViewById(R.id.imageViewInfoButton);
         imageViewPlayButton = (ImageView) findViewById(R.id.imageViewPlayButton);
         imageViewPlayButtonBackground = (ImageView) findViewById(R.id.imageViewPlayButtonBackground);
         imageViewEulerPrincipal = (ImageView) findViewById(R.id.imageViewEulerMain);
 
+        // At the start we fade and select a quote
         fadeInAnimation();
         selectQuote();
     }
 
-    public void onClickListLevels(View view)
+    /**
+     * Go to next activity that is Numbers level
+     * @param view the button being clicked
+     */
+    public void onClickNextActivityNumbersLevel(View view)
     {
-        Intent intentListLevels = new Intent(getApplicationContext(), ListLevelsActivity.class);
-        startActivity(intentListLevels);
+        Intent intentNumbersLevel = new Intent(getApplicationContext(), NumbersLevelsActivity.class);
+        startActivity(intentNumbersLevel);
+
     }
 
+    /**
+     * Fade animation of the textViews and the Euler image
+     */
     public void fadeInAnimation()
     {
         Animation fadeInAnimation = AnimationUtils.loadAnimation(this,R.anim.fadein);
@@ -50,6 +66,9 @@ public class MainActivity extends AppCompatActivity
         imageViewEulerPrincipal.startAnimation(fadeInAnimation);
     }
 
+    /**
+     * Select a random quote to put in the MainActivity
+     */
     public void selectQuote()
     {
         String[] quotes = getResources().getStringArray(R.array.quotes_from_euler);
