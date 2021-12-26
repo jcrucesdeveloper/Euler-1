@@ -36,7 +36,7 @@ public class QuestionActivity extends XmlParserActivity
         setContentView(R.layout.activity_question);
 
 
-        questionNumber = getIntent().getStringExtra(LevelCommunication.QUESTION_NUMBER_KEY);
+        questionNumber = "2";
         questionIndex = Integer.parseInt(questionNumber) - 1;
 
         questionList = getQuestionList();

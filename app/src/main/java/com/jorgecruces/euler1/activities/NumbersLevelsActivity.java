@@ -29,45 +29,7 @@ public class NumbersLevelsActivity extends AppCompatActivity {
         textViewLevelTitleNumbers.setText("Euler 1");
 
         ViewGroup gridLayout = (ViewGroup) findViewById(R.id.gridLayoutNumbers);
-        changeTextViewsInsideViewGroup(gridLayout,0);
 
     }
-
-
-    public void changeTextViewsInsideViewGroup(ViewGroup viewGroup,int startNumber)
-    {
-
-        for(int i = 0; i < viewGroup.getChildCount(); i++)
-        {
-            View v = viewGroup.getChildAt(i);
-
-            if(v instanceof TextView)
-            {
-                ((TextView) v).setText(Integer.toString(startNumber));
-                v.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View view) {
-                        String questionNumber = ((TextView) v).getText().toString();
-
-                        Intent intent = new Intent(getApplicationContext(),QuestionActivity.class);
-                        intent.putExtra(LevelCommunication.QUESTION_NUMBER_KEY,questionNumber);
-                        startActivity(intent);
-                    }
-                });
-                startNumber++;
-            }
-
-
-
-        }
-
-    }
-
-    public void onClickGoToLevel(TextView view)
-    {
-        String out = view.getText().toString();
-        Toast.makeText(this, out, Toast.LENGTH_SHORT).show();
-    }
-
 
 }
