@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity
 {
 
     TextView textViewQuote, textViewTitle;
-    ImageView imageViewInfoButton, imageViewPlayButton,imageViewPlayButtonBackground,imageViewEulerPrincipal;
+    ImageView imageViewInfoButton, imageViewPlayButton,imageViewEulerPrincipal;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -33,10 +33,9 @@ public class MainActivity extends AppCompatActivity
         textViewQuote = (TextView) findViewById(R.id.textViewQuote);
         textViewTitle = (TextView) findViewById(R.id.textViewTitle);
 
-        // InfoButton, PlayButton, PlayButtonBackground(? and Euler image
+        // InfoButton, PlayButton,  and Euler image
         imageViewInfoButton = (ImageView) findViewById(R.id.imageViewInfoButton);
         imageViewPlayButton = (ImageView) findViewById(R.id.imageViewPlayButton);
-        imageViewPlayButtonBackground = (ImageView) findViewById(R.id.imageViewPlayButtonBackground);
         imageViewEulerPrincipal = (ImageView) findViewById(R.id.imageViewEulerMain);
 
         // At the start we fade and select a quote

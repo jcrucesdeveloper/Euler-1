@@ -1,22 +1,13 @@
 package com.jorgecruces.euler1.activities;
 
-import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.os.Build;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.GridLayout;
 import android.widget.TextView;
-
 import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.view.numberLevelActivity.LevelButton;
 
-import java.util.ArrayList;
-import java.util.logging.Level;
 
 
 /**

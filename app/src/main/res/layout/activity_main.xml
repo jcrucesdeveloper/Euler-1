@@ -12,13 +12,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="180dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="173dp"
+        android:layout_marginBottom="8dp"
         android:fontFamily="sans-serif-thin"
         android:text="Euler I"
         android:textColor="@color/white"
         android:textSize="48sp"
-        app:layout_constraintBottom_toTopOf="@+id/frameLayout"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewPlayButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
@@ -31,50 +32,36 @@
         android:layout_marginStart="32dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="32dp"
+        android:layout_marginBottom="18dp"
         android:alpha="0.7"
         android:fontFamily="serif"
         android:text="@string/quote_place_holder"
         android:textAlignment="center"
         android:textColor="@color/white"
         android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageViewEulerMain"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <FrameLayout
-        android:id="@+id/frameLayout"
-        android:layout_width="wrap_content"
-        android:layout_height="0dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="32dp"
+    <ImageView
+        android:id="@+id/imageViewPlayButton"
+        android:layout_width="129dp"
+        android:layout_height="135dp"
+        android:layout_marginBottom="50dp"
+        android:onClick="onClickNextActivityNumbersLevel"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewTitle">
-
-        <ImageView
-            android:id="@+id/imageViewPlayButtonBackground"
-            android:layout_width="133dp"
-            android:layout_height="137dp"
-            android:layout_marginBottom="24dp"
-            android:onClick="onClickNextActivityNumbersLevel"
-            app:srcCompat="@drawable/play_button_background" />
-
-        <ImageView
-            android:id="@+id/imageViewPlayButton"
-            android:layout_width="129dp"
-            android:layout_height="135dp"
-            android:layout_marginBottom="28dp"
-            app:srcCompat="@drawable/play_button"
-            tools:ignore="SpeakableTextPresentCheck" />
-
-    </FrameLayout>
+        app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
+        app:srcCompat="@drawable/play_button"
+        tools:ignore="SpeakableTextPresentCheck" />
 
     <ImageView
         android:id="@+id/imageViewEulerMain"
-        android:layout_width="293dp"
-        android:layout_height="356dp"
-        android:layout_marginTop="24dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/textViewTitle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewQuote"

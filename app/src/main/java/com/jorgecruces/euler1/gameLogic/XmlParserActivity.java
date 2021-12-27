@@ -1,6 +1,5 @@
 package com.jorgecruces.euler1.gameLogic;
 
-import android.util.Log;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,9 +21,9 @@ import javax.xml.parsers.ParserConfigurationException;
 
 public class XmlParserActivity extends AppCompatActivity
 {
-    public List<Question> getQuestionList()
+    public ArrayList<Question> getQuestionList()
     {
-        List<Question> questionList = new ArrayList<Question>();
+        ArrayList<Question> questionList = new ArrayList<Question>();
 
         try
         {

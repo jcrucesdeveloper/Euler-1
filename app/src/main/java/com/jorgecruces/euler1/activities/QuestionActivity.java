@@ -21,10 +21,11 @@ public class QuestionActivity extends XmlParserActivity
 {
 
     private MathView mathView;
-    private String questionNumber;
-    private int questionIndex;
 
-    private List<Question> questionList;
+    //ArrayList of Questions
+    private ArrayList<Question> questionList;
+
+    // Current question
     private Question questionLevel;
 
     private String correctAlternative;
@@ -35,18 +36,43 @@ public class QuestionActivity extends XmlParserActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
+        setUpQuestion();
+        renderLabels();
+        renderQuestion();
+        renderAlternatives();
+    }
 
-        questionNumber = "2";
-        questionIndex = Integer.parseInt(questionNumber) - 1;
+
+    /**
+     * Get the question from xml asset file and charge it to the
+     * Question representation named questionLevel
+     *
+     */
+    public void setUpQuestion()
+    {
+
+        // Question number from the intent
+        String questionNumberStr;
+        questionNumberStr = getIntent().getStringExtra("levelNumber");
+
+        // For some reason, we did not find the question
+        if (questionNumberStr == null)
+        {
+            questionNumberStr = "-1";
+        }
+
+
+        int questionNumber = Integer.parseInt(questionNumberStr) - 1;
 
         questionList = getQuestionList();
 
-        // Question if something went wrong
-        questionLevel = new Question("question","1","2","3","4","");
+        // Default question if something goes wrong
+        questionLevel = new Question();
+        questionLevel.setQuestionNumber(questionNumber);
 
         try
         {
-            questionLevel = questionList.get(this.questionIndex);
+            questionLevel = questionList.get(questionNumber);
         }
         catch(Exception e)
         {
@@ -54,21 +80,30 @@ public class QuestionActivity extends XmlParserActivity
         }
 
         correctAlternative = questionLevel.getCorrectAlternative();
+        // Charged questionLevel and correctAlternative
+        // Now we render things
+    }
 
+    /**
+     * Render the labels of the activity:
+     * - Question number (TextView)
+     * - Question Title (TextView)(Optional)
+     */
+    public void renderLabels() {
 
         // Question Number
         TextView textViewCurrentLevelNumber = (TextView) findViewById(R.id.textViewCurrentLevelNumber);
-        textViewCurrentLevelNumber.setText(questionNumber);
+        textViewCurrentLevelNumber.setText(questionLevel.getQuestionNumberString());
 
         // Question Title (Optional)
         TextView textViewQuestionTile = (TextView) findViewById(R.id.textViewQuestionTitle);
         textViewQuestionTile.setText(questionLevel.getQuestionTitle());
-
-        setUpQuestion();
-        setUpAlternatives();
     }
 
-    public void setUpQuestion()
+    /**
+     * Render the questionLabel and resize it if necessary
+     */
+    public void renderQuestion()
     {
         String questionLabel = questionLevel.getQuestionLabel();
         String questionFontSize = "30";
@@ -82,7 +117,10 @@ public class QuestionActivity extends XmlParserActivity
         mathView.setText("<div style=\"font-size:" + questionFontSize + "px;\"> $$" + questionLabel + "$$ </div>");
     }
 
-    public void setUpAlternatives()
+    /**
+     * Render the alternatives and shuffle it every time
+     */
+    public void renderAlternatives()
     {
         TextView textViewAlternative1, textViewAlternative2, textViewAlternative3, textViewAlternative4;
 
