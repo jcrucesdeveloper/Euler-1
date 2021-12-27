@@ -38,7 +38,16 @@ public class LevelButton extends Button {
         String levelNumberStr = Integer.toString(this.number);
         setText(levelNumberStr);
         this.setPadding(3,3,3,3);
-        this.setBackgroundColor(Color.rgb(200,200,200));
+        if (this.number > 2)
+        {
+            this.setBackgroundColor(Color.GRAY);
+
+        }
+        else
+        {
+            this.setBackgroundColor(Color.WHITE);
+        }
+        this.setTextColor(Color.BLACK);
 
     }
 

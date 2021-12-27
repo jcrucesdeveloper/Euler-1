@@ -6,40 +6,36 @@
     android:layout_height="match_parent"
     android:background="@color/background"
     android:orientation="vertical"
-    android:weightSum="10"
+    android:weightSum="15"
     tools:context=".activities.QuestionActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:layout_weight="1"
+        android:layout_height="0dp"
+        android:layout_weight="0.5"
         android:orientation="horizontal"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="20"
-            app:srcCompat="@drawable/arrow_back" />
+        tools:layout_weight="2">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal"
-            android:layout_weight="3"
-            >
+            android:padding="10dp"
+            android:weightSum="10">
+
+            <ImageView
+                android:id="@+id/imageView2"
+                android:layout_width="0dp"
+                android:layout_height="50dp"
+                android:layout_marginTop="5dp"
+                android:layout_weight="2"
+                app:srcCompat="@drawable/arrow_back" />
 
             <TextView
                 android:id="@+id/textViewLevelLabel"
-                android:layout_width="31dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="-50dp"
-                android:layout_weight="10"
+                android:layout_weight="5"
                 android:fontFamily="sans-serif-thin"
 
                 android:text="Level"
@@ -52,10 +48,9 @@
 
             <TextView
                 android:id="@+id/textViewCurrentLevelNumber"
-                android:layout_width="43dp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="-90dp"
-                android:layout_weight="10"
+                android:layout_weight="3"
                 android:fontFamily="sans-serif-thin"
                 android:text="1"
                 android:textAlignment="center"
@@ -65,15 +60,12 @@
         </LinearLayout>
     </LinearLayout>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/constraintLayout2"
+    <LinearLayout
+        android:id="@+id/linearLayoutQuestion"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginTop="100dp"
-        android:layout_marginEnd="4dp"
-        android:layout_weight="9"
+        android:layout_height="0dp"
+        android:layout_weight="12"
+        android:orientation="vertical"
         app:layout_constraintEnd_toStartOf="@+id/gridLayout"
         app:layout_constraintStart_toEndOf="@+id/gridLayout"
         app:layout_constraintTop_toTopOf="parent">
@@ -81,14 +73,11 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="220dp"
+            android:layout_height="0dp"
             android:layout_marginTop="32dp"
             android:layout_marginBottom="32dp"
-            android:background="@drawable/background_question"
-            app:layout_constraintBottom_toTopOf="@+id/gridLayout"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            android:layout_weight="3"
+            android:background="@drawable/background_question">
 
             <io.github.kexanie.library.MathView
                 android:id="@+id/mathView"
@@ -120,17 +109,11 @@
         <androidx.gridlayout.widget.GridLayout
             android:id="@+id/gridLayout"
             android:layout_width="match_parent"
-            android:layout_height="324dp"
-            android:layout_margin="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_weight="4"
+            android:layout_height="0dp"
             android:padding="4dp"
             app:columnCount="2"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.761"
-            app:layout_constraintStart_toStartOf="parent"
-            app:rowCount="2">
+            app:rowCount="2"
+            tools:layout_weight="6">
 
             <TextView
                 android:id="@+id/textViewAlternative1"
@@ -140,10 +123,10 @@
                 android:background="@drawable/background_question"
                 android:fontFamily="sans-serif-thin"
                 android:gravity="fill_horizontal|center_vertical"
+                android:onClick="onClickAlternative"
                 android:text="283"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:onClick="onClickAlternative"
                 android:textSize="34sp"
                 app:layout_column="0"
                 app:layout_columnWeight="1"
@@ -161,10 +144,10 @@
                 android:elevation="15dp"
                 android:fontFamily="sans-serif-thin"
                 android:gravity="fill_horizontal|center_vertical"
+                android:onClick="onClickAlternative"
                 android:text="6"
                 android:textAlignment="center"
                 android:textColor="@color/white"
-                android:onClick="onClickAlternative"
                 android:textSize="34sp"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
@@ -182,6 +165,7 @@
                 android:background="@drawable/background_question"
                 android:fontFamily="sans-serif-thin"
                 android:gravity="fill_horizontal|center_vertical"
+                android:onClick="onClickAlternative"
                 android:text="5"
                 android:textAlignment="center"
                 android:textColor="@color/white"
@@ -189,7 +173,6 @@
                 app:layout_column="0"
                 app:layout_columnWeight="1"
                 app:layout_gravity="fill_horizontal|center_vertical|fill_vertical"
-                android:onClick="onClickAlternative"
                 app:layout_row="1"
                 app:layout_rowWeight="1" />
 
@@ -201,25 +184,25 @@
                 android:background="@drawable/background_question"
                 android:fontFamily="sans-serif-thin"
                 android:gravity="fill_horizontal|center_vertical"
+                android:onClick="onClickAlternative"
                 android:text="9"
                 android:textAlignment="center"
                 android:textColor="@color/white"
                 android:textSize="34sp"
                 app:layout_column="1"
                 app:layout_columnWeight="1"
-                android:onClick="onClickAlternative"
                 app:layout_gravity="fill|fill_horizontal|center_vertical"
                 app:layout_row="1"
                 app:layout_rowWeight="1" />
         </androidx.gridlayout.widget.GridLayout>
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+    </LinearLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="5"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
