@@ -85,29 +85,13 @@
             android:id="@+id/gridLayoutNumbers"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="4dp"
-            app:columnCount="5"
+            android:layout_margin="5dp"
+            android:foregroundGravity="center"
+            android:padding="10dp"
+            app:useDefaultMargins="true"
+            app:columnCount="4"
             app:rowCount="20"
-            app:rowOrderPreserved="true">
-
-
-            <TextView
-                android:id="@+id/textViewGrid1"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="2dp"
-                android:background="#2D3A78"
-                android:fontFamily="sans-serif"
-                android:padding="10dp"
-                android:text="1"
-                android:textAlignment="center"
-                android:textColor="@color/white"
-                android:textSize="20sp"
-                app:layout_columnWeight="1"
-                app:layout_gravity="fill_horizontal|center_vertical" />
-
-
-        </androidx.gridlayout.widget.GridLayout>
+            app:rowOrderPreserved="true" />
     </ScrollView>
 
 </LinearLayout>
