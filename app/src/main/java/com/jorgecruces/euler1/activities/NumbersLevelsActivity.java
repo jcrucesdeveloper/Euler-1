@@ -3,6 +3,7 @@ package com.jorgecruces.euler1.activities;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.jorgecruces.euler1.R;
@@ -31,6 +32,17 @@ public class NumbersLevelsActivity extends AppCompatActivity {
         setUpLevelNumbersButtons();
     }
 
+
+    /**
+     * Go back to the main menu (MainActivity)
+     */
+    public void onClickGoBackArrow(View view) {
+        finish();
+    }
+
+    /**
+     * Set up 100th levelButtons
+     */
     public void setUpLevelNumbersButtons() {
         for (int i = 1; i <= 100; i++) {
             LevelButton levelButton = new LevelButton(this, i);

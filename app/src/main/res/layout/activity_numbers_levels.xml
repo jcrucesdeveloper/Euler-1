@@ -21,7 +21,7 @@
             android:layout_width="59dp"
             android:layout_height="match_parent"
             android:layout_weight="0"
-            android:onClick="onClickGoBackToMainScreen"
+            android:onClick="onClickGoBackArrow"
             app:srcCompat="@drawable/arrow_back"
             tools:ignore="TouchTargetSizeCheck" />
 

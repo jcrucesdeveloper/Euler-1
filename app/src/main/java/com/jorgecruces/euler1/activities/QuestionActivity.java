@@ -1,9 +1,11 @@
 package com.jorgecruces.euler1.activities;
 
-import android.graphics.Color;
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -69,11 +71,11 @@ public class QuestionActivity extends XmlParserActivity
 
         // Default question if something goes wrong
         questionLevel = new Question();
-        questionLevel.setQuestionNumber(questionNumber);
 
         try
         {
             questionLevel = questionList.get(questionNumber);
+            questionLevel.setQuestionNumber(questionNumber + 1);
         }
         catch(Exception e)
         {
@@ -168,7 +170,21 @@ public class QuestionActivity extends XmlParserActivity
 
     }
 
+    /**
+     * We go back to the last activity (Levels activity)
+     */
+    public void onClickGoBackArrow(View view)
+    {
+        finish();
+    }
 
+
+    /**
+     * We check the answer to the Question:
+     * if this is correct we create a custom PopUp
+     * if false we run an add
+     * @param view
+     */
     public void onClickAlternative(View view)
     {
         TextView textViewAlternative = (TextView) view;
@@ -176,12 +192,31 @@ public class QuestionActivity extends XmlParserActivity
 
         if(stringAlternative.equals(correctAlternative))
         {
-            Toast.makeText(this, "Correct answer", Toast.LENGTH_SHORT).show();
+            // Correct Correctly
+            answeredCorrectly();
         }
         else
         {
-            Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
-
+            // Incorrect Alternative
+            answeredIncorrectly();
         }
     }
+
+    /**
+     * The user answered correctly
+     */
+    public void answeredCorrectly()
+    {
+        Dialog nextLevelDialog = new Dialog(this);
+        nextLevelDialog.setContentView(R.layout.custom_dialog_winning);
+        Button nextLevelButton = (Button) nextLevelDialog.findViewById(R.id.nextLevelButton);
+        nextLevelDialog.show();
+    }
+
+    public void answeredIncorrectly() {
+
+
+
+    }
+
 }
