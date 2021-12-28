@@ -2,12 +2,13 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/dialogLayout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#000000">
 
     <TextView
-        android:id="@+id/textView3"
+        android:id="@+id/nextLevelTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -42,7 +43,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView3"
+        app:layout_constraintTop_toBottomOf="@+id/nextLevelTextView"
         app:srcCompat="@drawable/checkbox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

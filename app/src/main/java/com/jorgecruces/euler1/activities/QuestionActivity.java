@@ -5,6 +5,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -13,9 +16,12 @@ import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.gameLogic.Question;
 import com.jorgecruces.euler1.gameLogic.XmlParserActivity;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import io.github.kexanie.library.MathView;
 
@@ -209,8 +215,44 @@ public class QuestionActivity extends XmlParserActivity
     {
         Dialog nextLevelDialog = new Dialog(this);
         nextLevelDialog.setContentView(R.layout.custom_dialog_winning);
+
+        // Animation popUp
+        Animation fadeInAnimation = AnimationUtils.loadAnimation(this,R.anim.fadein_pop_up);
+
+        // fadeIn animation
+        ViewGroup dialogLayout = (ViewGroup) nextLevelDialog.findViewById(R.id.dialogLayout);
+        dialogLayout.startAnimation(fadeInAnimation);
+
+        // Button and textView of the popUp
         Button nextLevelButton = (Button) nextLevelDialog.findViewById(R.id.nextLevelButton);
+        TextView messageNextLevel = (TextView) nextLevelDialog.findViewById(R.id.nextLevelTextView);
+
+        // Random phrase
+        messageNextLevel.setText(getNextLevelPhrase());
+        nextLevelButton.setOnClickListener(view -> goingNextLevel());
         nextLevelDialog.show();
+    }
+
+    /**
+     * Get random phrases to the next level PopUp
+     * @return a random phrases
+     */
+    public String getNextLevelPhrase() {
+        String[] phrases = getResources().getStringArray(R.array.next_level_phrases);
+        Random randomNumber = new Random();
+        int quoteNumber = randomNumber.nextInt(phrases.length);
+        return phrases[quoteNumber];
+    }
+
+    public void goingNextLevel() {
+        String nextLevelStr = Integer.toString(questionLevel.getQuestionNumber() + 1);
+
+        // We go to the same activity but with different levelNumber
+        Intent intent = getIntent();
+        intent.putExtra("levelNumber",nextLevelStr);
+        finish();
+        startActivity(intent);
+
     }
 
     public void answeredIncorrectly() {
