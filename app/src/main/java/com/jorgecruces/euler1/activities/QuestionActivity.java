@@ -1,5 +1,6 @@
 package com.jorgecruces.euler1.activities;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.TypedValue;
 import android.view.View;
@@ -114,7 +115,7 @@ public class QuestionActivity extends XmlParserActivity
 
 
         mathView = (MathView) findViewById(R.id.mathView);
-        mathView.setText("<div style=\"font-size:" + questionFontSize + "px;\"> $$" + questionLabel + "$$ </div>");
+        mathView.setText("<div style=\"font-size:" + questionFontSize + "px;color:white;\"> $$" + questionLabel + "$$ </div>");
     }
 
     /**
