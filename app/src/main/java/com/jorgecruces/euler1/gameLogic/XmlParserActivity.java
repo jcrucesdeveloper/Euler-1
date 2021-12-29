@@ -18,6 +18,9 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+/**
+ * This class does magic
+ */
 public class XmlParserActivity extends AppCompatActivity
 {
     public ArrayList<Question> getQuestionList()
