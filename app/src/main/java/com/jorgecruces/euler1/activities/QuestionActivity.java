@@ -2,7 +2,9 @@ package com.jorgecruces.euler1.activities;
 
 import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,6 +41,9 @@ public class QuestionActivity extends XmlParserActivity
 
     private String correctAlternative;
 
+    // Current level number 1 - 100
+    private int levelNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -50,6 +55,7 @@ public class QuestionActivity extends XmlParserActivity
         renderQuestion();
         renderAlternatives();
     }
+
 
 
     /**
@@ -64,6 +70,9 @@ public class QuestionActivity extends XmlParserActivity
         String questionNumberStr;
         questionNumberStr = getIntent().getStringExtra("levelNumber");
 
+
+        this.levelNumber = Integer.parseInt(questionNumberStr);
+
         // For some reason, we did not find the question
         if (questionNumberStr == null)
         {
@@ -71,8 +80,7 @@ public class QuestionActivity extends XmlParserActivity
         }
 
 
-        int questionNumber = Integer.parseInt(questionNumberStr) - 1;
-
+        int questionIndex = this.levelNumber - 1;
         questionList = getQuestionList();
 
         // Default question if something goes wrong
@@ -80,8 +88,8 @@ public class QuestionActivity extends XmlParserActivity
 
         try
         {
-            questionLevel = questionList.get(questionNumber);
-            questionLevel.setQuestionNumber(questionNumber + 1);
+            questionLevel = questionList.get(questionIndex);
+            questionLevel.setQuestionNumber(questionIndex + 1);
         }
         catch(Exception e)
         {
@@ -209,10 +217,33 @@ public class QuestionActivity extends XmlParserActivity
     }
 
     /**
-     * The user answered correctly
+     * The user answered the Question correctly
      */
     public void answeredCorrectly()
     {
+        storeLastLevelInMemory();
+        showDialogNextLevel();
+    }
+
+    /**
+     * We store the current level as the last level to play
+     */
+    public void storeLastLevelInMemory()
+    {
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.app_name),MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        // We save the next level as the lasLevelNumber, because here is where we are
+        editor.putInt(getString(R.string.level), (this.levelNumber + 1));
+        editor.apply();
+
+    }
+
+    /**
+     * Show the dialog to the next Level
+     */
+    public void showDialogNextLevel()
+    {
+        // Show dialog
         Dialog nextLevelDialog = new Dialog(this);
         nextLevelDialog.setContentView(R.layout.custom_dialog_winning);
 
@@ -231,6 +262,7 @@ public class QuestionActivity extends XmlParserActivity
         messageNextLevel.setText(getNextLevelPhrase());
         nextLevelButton.setOnClickListener(view -> goingNextLevel());
         nextLevelDialog.show();
+
     }
 
     /**

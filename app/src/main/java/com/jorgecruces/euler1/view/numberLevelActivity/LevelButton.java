@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
+import android.util.Log;
 import android.widget.Button;
 
 import com.jorgecruces.euler1.activities.QuestionActivity;
@@ -22,19 +23,16 @@ public class LevelButton extends Button {
 
     private Activity numbersLevelActivity;
 
-    public LevelButton(Activity numbersLevelActivity, Integer number) {
+    public LevelButton(Activity numbersLevelActivity,int number, int lastLevelNumber) {
         super(numbersLevelActivity);
-        this.numbersLevelActivity = numbersLevelActivity;
         this.number = number;
+        this.lastLevelNumber = lastLevelNumber;
+        this.numbersLevelActivity = numbersLevelActivity;
         configureButton();
     }
 
-
-    /**
-     * Set the last level Number
-     * @param lastLevelNumber
-     */
-    public void setLastLevelNumber(int lastLevelNumber) {
+    public void setLastLevelNumber(int lastLevelNumber)
+    {
         this.lastLevelNumber = lastLevelNumber;
     }
     /**
@@ -50,18 +48,23 @@ public class LevelButton extends Button {
         String levelNumberStr = Integer.toString(this.number);
         setText(levelNumberStr);
         this.setPadding(3,3,3,3);
+        // We update the state of the button depending of the last level number
+        updateButton();
+        this.setTextColor(Color.BLACK);
+    }
 
-
-        if (this.lastLevelNumber < this.number)
+    public void updateButton()
+    {
+        if (this.number <= this.lastLevelNumber)
         {
-            this.setBackgroundColor(Color.GRAY);
+            this.setBackgroundColor(Color.WHITE);
+            this.setEnabled(true);
         }
         else
         {
-            this.setBackgroundColor(Color.WHITE);
+            this.setBackgroundColor(Color.GRAY);
+            this.setEnabled(false);
         }
-        this.setTextColor(Color.BLACK);
-
     }
 
 
