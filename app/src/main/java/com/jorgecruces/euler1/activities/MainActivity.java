@@ -2,13 +2,18 @@ package com.jorgecruces.euler1.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.jorgecruces.euler1.R;
 
@@ -54,6 +59,31 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    public void onClickResetLevels(View view)
+    {
+        Dialog confirmResetButtonDialog = new Dialog(this);
+        confirmResetButtonDialog.setContentView(R.layout.confirm_reset_level_dialog);
+
+        Button confirmButton = (Button) confirmResetButtonDialog.findViewById(R.id.confirmResetLevelsButton);
+        confirmButton.setOnClickListener(button -> resetLevels(confirmResetButtonDialog));
+
+
+        confirmResetButtonDialog.show();
+    }
+
+    public void resetLevels(Dialog confirmResetButtonDialog)
+    {
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.app_name),MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+
+        // Reset the levels to 0
+        editor.putInt(getString(R.string.level), 1);
+        // Store it
+        editor.apply();
+
+        Toast.makeText(this, "Levels were reset", Toast.LENGTH_SHORT).show();
+        confirmResetButtonDialog.dismiss();
+    }
     /**
      * Fade animation of the textViews and the Euler image
      */

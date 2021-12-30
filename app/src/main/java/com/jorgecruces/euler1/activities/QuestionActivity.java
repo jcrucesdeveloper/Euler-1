@@ -4,7 +4,6 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -17,8 +16,6 @@ import android.widget.Toast;
 import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.gameLogic.Question;
 import com.jorgecruces.euler1.gameLogic.XmlParserActivity;
-
-import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -255,7 +252,7 @@ public class QuestionActivity extends XmlParserActivity
         dialogLayout.startAnimation(fadeInAnimation);
 
         // Button and textView of the popUp
-        Button nextLevelButton = (Button) nextLevelDialog.findViewById(R.id.nextLevelButton);
+        Button nextLevelButton = (Button) nextLevelDialog.findViewById(R.id.confirmResetLevelsButton);
         TextView messageNextLevel = (TextView) nextLevelDialog.findViewById(R.id.nextLevelTextView);
 
         // Random phrase
@@ -289,6 +286,7 @@ public class QuestionActivity extends XmlParserActivity
 
     public void answeredIncorrectly() {
 
+        // Here we run ads
 
 
     }
