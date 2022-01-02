@@ -1,9 +1,11 @@
 package com.jorgecruces.euler1.activities;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -41,6 +43,9 @@ public class QuestionActivity extends XmlParserActivity
     // Current level number 1 - 100
     private int levelNumber;
 
+    // Last Level number
+    private int lastLevelNumber;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -52,7 +57,6 @@ public class QuestionActivity extends XmlParserActivity
         renderQuestion();
         renderAlternatives();
     }
-
 
 
     /**
@@ -215,10 +219,18 @@ public class QuestionActivity extends XmlParserActivity
 
     /**
      * The user answered the Question correctly
+     * We store in memory if the current level is greater than the last level
+     * And we show the dialog
      */
     public void answeredCorrectly()
     {
-        storeLastLevelInMemory();
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.app_name), Context.MODE_PRIVATE);
+        int lastLevelNumber = sharedPreferences.getInt(getString(R.string.level),1);
+
+        if (this.levelNumber >= lastLevelNumber)
+        {
+            storeLastLevelInMemory();
+        }
         showDialogNextLevel();
     }
 
