@@ -73,6 +73,7 @@
         android:layout_height="62dp"
         android:layout_marginStart="90dp"
         android:layout_marginTop="100dp"
+        android:onClick="onClickInfoActivity"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewTitle"
         app:srcCompat="@drawable/info_button" />

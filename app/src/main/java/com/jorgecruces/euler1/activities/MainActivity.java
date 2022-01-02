@@ -71,6 +71,16 @@ public class MainActivity extends AppCompatActivity
         confirmResetButtonDialog.show();
     }
 
+    public void onClickInfoActivity(View view)
+    {
+        Intent intentNumbersLevel = new Intent(getApplicationContext(), InfoActivity.class);
+        startActivity(intentNumbersLevel);
+    }
+
+    /**
+     * Reset the levels, erase SharedPreferences memory
+     * @param confirmResetButtonDialog
+     */
     public void resetLevels(Dialog confirmResetButtonDialog)
     {
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.app_name),MODE_PRIVATE);
