@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.jorgecruces.euler1.R;
+import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 
 public class InfoActivity extends AppCompatActivity {
 
@@ -16,6 +17,7 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void onClickGoBackButton(View view) {
+        MediaPlayerReproducer.getInstance().reproduceClickSound(this);
         finish();
     }
 

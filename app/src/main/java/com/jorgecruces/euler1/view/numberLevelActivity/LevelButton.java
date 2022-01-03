@@ -8,6 +8,7 @@ import android.util.Log;
 import android.widget.Button;
 
 import com.jorgecruces.euler1.activities.QuestionActivity;
+import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 
 
 /**
@@ -74,6 +75,7 @@ public class LevelButton extends Button {
      */
     public void onClickLevelButton()
     {
+        MediaPlayerReproducer.getInstance().reproduceClickSound(this.numbersLevelActivity);
         Intent questionActivityIntent = new Intent(this.numbersLevelActivity, QuestionActivity.class);
         questionActivityIntent.putExtra("levelNumber",Integer.toString(this.number));
         this.numbersLevelActivity.startActivity(questionActivityIntent);

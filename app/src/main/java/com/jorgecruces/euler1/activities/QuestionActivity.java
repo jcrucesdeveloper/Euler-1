@@ -18,6 +18,7 @@ import android.widget.Toast;
 import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.gameLogic.Question;
 import com.jorgecruces.euler1.gameLogic.XmlParserActivity;
+import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -202,6 +203,7 @@ public class QuestionActivity extends XmlParserActivity
      */
     public void onClickAlternative(View view)
     {
+        MediaPlayerReproducer.getInstance().reproduceClickSound(this);
         TextView textViewAlternative = (TextView) view;
         String stringAlternative = textViewAlternative.getText().toString();
 
@@ -224,6 +226,7 @@ public class QuestionActivity extends XmlParserActivity
      */
     public void answeredCorrectly()
     {
+        MediaPlayerReproducer.getInstance().reproduceWinSound(this);
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.app_name), Context.MODE_PRIVATE);
         int lastLevelNumber = sharedPreferences.getInt(getString(R.string.level),1);
 

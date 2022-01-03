@@ -5,7 +5,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
+import android.media.MediaPlayer;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -16,6 +17,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.jorgecruces.euler1.R;
+import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 
 import java.util.Random;
 
@@ -28,6 +30,8 @@ public class MainActivity extends AppCompatActivity
     TextView textViewQuote, textViewTitle;
     ImageView imageViewInfoButton, imageViewPlayButton,imageViewEulerPrincipal;
 
+    int clickSound;
+    SoundPool sp;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -46,14 +50,19 @@ public class MainActivity extends AppCompatActivity
         // At the start we fade and select a quote
         fadeInAnimation();
         selectQuote();
+
+
+
     }
 
     /**
      * Go to next activity that is Numbers level
      * @param view the button being clicked
      */
-    public void onClickNextActivityNumbersLevel(View view)
+    public void onClickPlay(View view)
     {
+        MediaPlayerReproducer.getInstance().reproduceClickSound(this);
+
         Intent intentNumbersLevel = new Intent(getApplicationContext(), NumbersLevelsActivity.class);
         startActivity(intentNumbersLevel);
 
@@ -61,6 +70,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickResetLevels(View view)
     {
+        MediaPlayerReproducer.getInstance().reproduceClickSound(this);
         Dialog confirmResetButtonDialog = new Dialog(this);
         confirmResetButtonDialog.setContentView(R.layout.confirm_reset_level_dialog);
 
@@ -73,6 +83,7 @@ public class MainActivity extends AppCompatActivity
 
     public void onClickInfoActivity(View view)
     {
+        MediaPlayerReproducer.getInstance().reproduceClickSound(this);
         Intent intentNumbersLevel = new Intent(getApplicationContext(), InfoActivity.class);
         startActivity(intentNumbersLevel);
     }

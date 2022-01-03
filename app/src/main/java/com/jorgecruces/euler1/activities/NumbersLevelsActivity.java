@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import com.jorgecruces.euler1.R;
+import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 import com.jorgecruces.euler1.view.numberLevelActivity.LevelButton;
 
 import java.util.ArrayList;
@@ -69,6 +70,7 @@ public class NumbersLevelsActivity extends AppCompatActivity {
      */
     public void onClickGoBackArrow(View view)
     {
+        MediaPlayerReproducer.getInstance().reproduceClickSound(this);
         finish();
     }
 
