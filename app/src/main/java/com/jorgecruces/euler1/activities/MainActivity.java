@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
@@ -28,10 +29,9 @@ public class MainActivity extends AppCompatActivity
 {
 
     TextView textViewQuote, textViewTitle;
-    ImageView imageViewInfoButton, imageViewPlayButton,imageViewEulerPrincipal;
+    ImageView imageViewInfoButton, imageViewPlayButton,imageViewEulerPrincipal, imageViewVolumeButton;
 
-    int clickSound;
-    SoundPool sp;
+    private boolean soundOn;
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
@@ -43,15 +43,19 @@ public class MainActivity extends AppCompatActivity
         textViewTitle = (TextView) findViewById(R.id.textViewTitle);
 
         // InfoButton, PlayButton,  and Euler image
+        // SoundButton
         imageViewInfoButton = (ImageView) findViewById(R.id.imageViewInfoButton);
         imageViewPlayButton = (ImageView) findViewById(R.id.imageViewPlayButton);
         imageViewEulerPrincipal = (ImageView) findViewById(R.id.imageViewEulerMain);
+        imageViewVolumeButton = (ImageView) findViewById(R.id.volumeButton);
+
+        soundOn = true;
+        imageViewVolumeButton.setOnClickListener(view -> { onClickVolumeButton();});
+
 
         // At the start we fade and select a quote
         fadeInAnimation();
         selectQuote();
-
-
 
     }
 
@@ -126,6 +130,22 @@ public class MainActivity extends AppCompatActivity
         int quoteNumber = randomNumber.nextInt(quotes.length);
         String quoteToDisplay = quotes[quoteNumber];
         textViewQuote.setText(quoteToDisplay);
+    }
+
+    public void onClickVolumeButton()
+    {
+        MediaPlayerReproducer.getInstance().changeAudioReproducing();
+        if (soundOn)
+        {
+            this.imageViewVolumeButton.setImageResource(R.drawable.volume_off);
+            soundOn = false;
+        }
+        else
+        {
+            this.imageViewVolumeButton.setImageResource(R.drawable.volume_on);
+            soundOn = true;
+
+        }
     }
 
 

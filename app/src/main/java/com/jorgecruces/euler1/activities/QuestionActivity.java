@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
@@ -301,7 +302,13 @@ public class QuestionActivity extends XmlParserActivity
 
     public void answeredIncorrectly() {
 
-        // Here we run ads
+        // Vibration
+        Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+        v.vibrate(300);
+
+        // Ad
+
+
 
 
     }

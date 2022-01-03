@@ -9,10 +9,21 @@ import com.jorgecruces.euler1.R;
 public class MediaPlayerReproducer {
 
     private static final MediaPlayerReproducer mp = new MediaPlayerReproducer();
+    private boolean isAudioReproducing = true;
 
     private MediaPlayerReproducer()
     {
 
+    }
+
+    public void changeAudioReproducing() {
+        if (isAudioReproducing)
+        {
+            isAudioReproducing = false;
+        } else
+        {
+            isAudioReproducing = true;
+        }
     }
 
     public static MediaPlayerReproducer getInstance()
@@ -43,6 +54,11 @@ public class MediaPlayerReproducer {
      */
     private void reproduceSound(Context context, int R)
     {
+        if(!isAudioReproducing)
+        {
+            return;
+        }
+
         MediaPlayer mp = MediaPlayer.create(context, R);
         try
         {

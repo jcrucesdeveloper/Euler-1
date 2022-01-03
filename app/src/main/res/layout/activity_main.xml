@@ -103,4 +103,21 @@
         app:layout_constraintBottom_toTopOf="@+id/resetLevelButton"
         app:layout_constraintEnd_toEndOf="parent" />
 
+    <ImageView
+        android:id="@+id/volumeButton"
+        android:layout_width="47dp"
+        android:layout_height="52dp"
+        android:layout_marginStart="77dp"
+        android:layout_marginTop="127dp"
+        android:layout_marginEnd="17dp"
+        android:layout_marginBottom="13dp"
+        android:onClick="onClickVolumeButton"
+        app:layout_constraintBottom_toTopOf="@+id/textView3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageViewPlayButton"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewEulerMain"
+        app:srcCompat="@drawable/volume_on" />
+
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

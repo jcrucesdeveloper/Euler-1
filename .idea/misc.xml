@@ -17,9 +17,11 @@
         <entry key="app/src/main/res/drawable/play_button_background.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/drawable/play_button_foreground.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/drawable/square.xml" value="0.13243243243243244" />
+        <entry key="app/src/main/res/drawable/volume_off.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/volume_on.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_info.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_list_levels.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_numbers_levels.xml" value="0.18" />
         <entry key="app/src/main/res/layout/activity_question.xml" value="0.15" />
         <entry key="app/src/main/res/layout/button_level.xml" value="0.22" />
@@ -27,6 +29,7 @@
         <entry key="app/src/main/res/layout/custom_dialog_winning.xml" value="0.2" />
         <entry key="app/src/main/res/layout/list_element.xml" value="0.22" />
         <entry key="app/src/main/res/layout/list_view_element.xml" value="0.25" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.13243243243243244" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/play_button.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/play_button_round.xml" value="0.22760416666666666" />
       </map>
