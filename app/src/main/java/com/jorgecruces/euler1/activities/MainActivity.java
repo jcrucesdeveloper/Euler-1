@@ -17,6 +17,9 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 
@@ -38,6 +41,8 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        initializeAds();
+
         // Title and Quote
         textViewQuote = (TextView) findViewById(R.id.textViewQuote);
         textViewTitle = (TextView) findViewById(R.id.textViewTitle);
@@ -57,6 +62,19 @@ public class MainActivity extends AppCompatActivity
         fadeInAnimation();
         selectQuote();
 
+
+    }
+
+    /**
+     * Initialize Ads
+     */
+    public void initializeAds()
+    {
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });
     }
 
     /**

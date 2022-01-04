@@ -16,6 +16,17 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
+
+import com.google.android.gms.ads.AdError;
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.FullScreenContentCallback;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.gameLogic.Question;
 import com.jorgecruces.euler1.gameLogic.XmlParserActivity;
@@ -48,16 +59,44 @@ public class QuestionActivity extends XmlParserActivity
     // Last Level number
     private int lastLevelNumber;
 
+
+    private InterstitialAd mInterstitialAd;
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
-
+        initializeInterstitialAd();
         setUpQuestion();
         renderLabels();
         renderQuestion();
         renderAlternatives();
+    }
+
+    public void initializeInterstitialAd()
+    {
+        AdRequest adRequest = new AdRequest.Builder().build();
+        String TAG = "alkfdj";
+
+        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        // The mInterstitialAd reference will be null until
+                        // an ad is loaded.
+                        mInterstitialAd = interstitialAd;
+                        Log.i(TAG, "onAdLoaded");
+                    }
+
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        // Handle the error
+                        Log.i(TAG, loadAdError.getMessage());
+                        mInterstitialAd = null;
+                    }
+                });
+
     }
 
 
@@ -210,7 +249,7 @@ public class QuestionActivity extends XmlParserActivity
 
         if(stringAlternative.equals(correctAlternative))
         {
-            // Correct Correctly
+            // Correct Alternative
             answeredCorrectly();
         }
         else
@@ -302,13 +341,23 @@ public class QuestionActivity extends XmlParserActivity
 
     public void answeredIncorrectly() {
 
+        // Ad
+        if (mInterstitialAd != null)
+        {
+            mInterstitialAd.show(QuestionActivity.this);
+        }
+        else
+        {
+            Log.d("TAG", "This interstitial ad wasn't ready yet ");
+
+        }
+
         // Vibration
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(300);
 
-        // Ad
-
-
+        // Toast
+        Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
 
 
     }
