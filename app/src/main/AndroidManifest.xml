@@ -3,11 +3,12 @@
     package="com.jorgecruces.euler1">
 
     <uses-permission android:name="android.permission.VIBRATE" />
+
     <application
-        android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
-        android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
+        android:allowBackup="true"
+        android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/Theme.Euler1">
 
@@ -39,6 +40,11 @@
             android:name="com.google.android.gms.ads.APPLICATION_ID"
             android:value="ca-app-pub-2905296254158275~6150592372"/>
 
+
+
     </application>
+
+
+
 
 </manifest>

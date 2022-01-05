@@ -30,6 +30,7 @@
         <entry key="app/src/main/res/layout/list_element.xml" value="0.22" />
         <entry key="app/src/main/res/layout/list_view_element.xml" value="0.25" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.13243243243243244" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.1" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/play_button.xml" value="0.22760416666666666" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/play_button_round.xml" value="0.22760416666666666" />
       </map>
