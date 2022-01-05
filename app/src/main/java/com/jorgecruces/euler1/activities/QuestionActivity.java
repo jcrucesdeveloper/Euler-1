@@ -346,12 +346,6 @@ public class QuestionActivity extends XmlParserActivity
         {
             mInterstitialAd.show(QuestionActivity.this);
         }
-        else
-        {
-            Log.d("TAG", "This interstitial ad wasn't ready yet ");
-
-        }
-
         // Vibration
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(300);
