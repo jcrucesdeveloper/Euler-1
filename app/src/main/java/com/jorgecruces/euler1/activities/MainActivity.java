@@ -5,9 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
-import android.media.MediaPlayer;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
@@ -66,7 +63,7 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * Initialize Ads
+     * Initialize Ads necessary to show ads
      */
     public void initializeAds()
     {
@@ -78,11 +75,12 @@ public class MainActivity extends AppCompatActivity
     }
 
     /**
-     * Go to next activity that is Numbers level
+     * Go to NumbersLevelActivity
      * @param view the button being clicked
      */
     public void onClickPlay(View view)
     {
+        // Sound
         MediaPlayerReproducer.getInstance().reproduceClickSound(this);
 
         Intent intentNumbersLevel = new Intent(getApplicationContext(), NumbersLevelsActivity.class);
@@ -90,29 +88,40 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    /**
+     * Erase sharedPreferences level info and restart levels
+     * @param view
+     */
     public void onClickResetLevels(View view)
     {
+        // Sound
         MediaPlayerReproducer.getInstance().reproduceClickSound(this);
+
         Dialog confirmResetButtonDialog = new Dialog(this);
         confirmResetButtonDialog.setContentView(R.layout.confirm_reset_level_dialog);
 
         Button confirmButton = (Button) confirmResetButtonDialog.findViewById(R.id.confirmResetLevelsButton);
         confirmButton.setOnClickListener(button -> resetLevels(confirmResetButtonDialog));
 
-
         confirmResetButtonDialog.show();
     }
 
+    /**
+     * Go to InfoActivity
+     * @param view
+     */
     public void onClickInfoActivity(View view)
     {
+        // Sound
         MediaPlayerReproducer.getInstance().reproduceClickSound(this);
+
         Intent intentNumbersLevel = new Intent(getApplicationContext(), InfoActivity.class);
         startActivity(intentNumbersLevel);
     }
 
     /**
      * Reset the levels, erase SharedPreferences memory
-     * @param confirmResetButtonDialog
+     * @param confirmResetButtonDialog Dialog of the button
      */
     public void resetLevels(Dialog confirmResetButtonDialog)
     {
@@ -121,7 +130,6 @@ public class MainActivity extends AppCompatActivity
 
         // Reset the levels to 0
         editor.putInt(getString(R.string.level), 1);
-        // Store it
         editor.apply();
 
         Toast.makeText(this, "Levels were reset", Toast.LENGTH_SHORT).show();
@@ -150,9 +158,15 @@ public class MainActivity extends AppCompatActivity
         textViewQuote.setText(quoteToDisplay);
     }
 
+    /**
+     * Enable or disable sound and change the image of the VolumeButton
+     */
     public void onClickVolumeButton()
     {
+        // Enable sound or disable
         MediaPlayerReproducer.getInstance().changeAudioReproducing();
+
+        // Change image of VolumeButton
         if (soundOn)
         {
             this.imageViewVolumeButton.setImageResource(R.drawable.volume_off);
@@ -162,7 +176,6 @@ public class MainActivity extends AppCompatActivity
         {
             this.imageViewVolumeButton.setImageResource(R.drawable.volume_on);
             soundOn = true;
-
         }
     }
 

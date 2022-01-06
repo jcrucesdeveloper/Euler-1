@@ -34,15 +34,18 @@ import java.util.Random;
 import io.github.kexanie.library.MathView;
 
 
+/**
+ * QuestionActivity, it has the questionLabel and the Alternatives
+ */
 public class QuestionActivity extends XmlParserActivity
 {
 
     private MathView mathView;
 
-    //ArrayList of Questions
+    // ArrayList of Questions (Logical Questions)
     private ArrayList<Question> questionList;
 
-    // Current question
+    // Current question (Logical Question)
     private Question questionLevel;
 
     private String correctAlternative;
@@ -50,12 +53,8 @@ public class QuestionActivity extends XmlParserActivity
     // Current level number 1 - 100
     private int levelNumber;
 
-    // Last Level number
-    private int lastLevelNumber;
-
     // Numbers of levels played for an ad to be shown
-    private int levelsForAds = 20;
-
+    private final int maxNumberLevelsForAds = 20;
 
 
     private InterstitialAd mInterstitialAd;
@@ -73,10 +72,13 @@ public class QuestionActivity extends XmlParserActivity
         renderAlternatives();
     }
 
+    /**
+     * Check if we have to run ads depending on how many levels have we played
+     */
     public void checkAdsRequisite()
     {
         int numbersLevelPlayed = getNumbersLevelPlayed();
-        if (numbersLevelPlayed >= levelsForAds)
+        if (numbersLevelPlayed >= maxNumberLevelsForAds)
         {
             if (mInterstitialAd != null)
             {
@@ -86,12 +88,20 @@ public class QuestionActivity extends XmlParserActivity
         }
     }
 
+    /**
+     * Get from SharedPreferences the numbers of levels played
+     * @return the numbers of level played (integer)
+     */
     public int getNumbersLevelPlayed()
     {
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.app_name), Context.MODE_PRIVATE);
         return sharedPreferences.getInt(getString(R.string.ads),0);
     }
 
+    /**
+     * Save in SharedPreferences the numbers of level Played
+     * @param n the number of levels
+     */
     public void saveSharedPreferencesLevelsPlayed(int n)
     {
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.app_name),MODE_PRIVATE);
@@ -105,8 +115,12 @@ public class QuestionActivity extends XmlParserActivity
      */
     public void initializeInterstitialAd()
     {
+        // AdUnit from Interstitial
+        // Change for production
         String adUnitID = getResources().getString(R.string.ad_string);
+
         AdRequest adRequest = new AdRequest.Builder().build();
+
         InterstitialAd.load(this,adUnitID, adRequest,
                 new InterstitialAdLoadCallback() {
 
@@ -167,8 +181,6 @@ public class QuestionActivity extends XmlParserActivity
         }
 
         correctAlternative = questionLevel.getCorrectAlternative();
-        // Charged questionLevel and correctAlternative
-        // Now we render things
     }
 
     /**
@@ -305,12 +317,14 @@ public class QuestionActivity extends XmlParserActivity
         showDialogNextLevel();
     }
 
+    /**
+     * Save in SharedPreferences the numbers of levels that we have played
+     */
     public void saveNumbersLevelPlayed()
     {
         int numbersLevelPlayed = getNumbersLevelPlayed();
         saveSharedPreferencesLevelsPlayed(numbersLevelPlayed + 1);
     }
-
 
     /**
      * We store the current level as the last level to play
@@ -349,6 +363,7 @@ public class QuestionActivity extends XmlParserActivity
 
         if (levelNumber >= 100)
         {
+            // Last Level
             nextLevelButton.setOnClickListener(view -> toInfoActivity());
 
         } else
@@ -360,6 +375,9 @@ public class QuestionActivity extends XmlParserActivity
 
     }
 
+    /**
+     * Go to InfoActivity
+     */
     public void toInfoActivity()
     {
         Intent intentNumbersLevel = new Intent(getApplicationContext(), InfoActivity.class);
@@ -377,6 +395,9 @@ public class QuestionActivity extends XmlParserActivity
         return phrases[quoteNumber];
     }
 
+    /**
+     * Go to the next Level
+     */
     public void toNextLevel() {
         String nextLevelStr = Integer.toString(questionLevel.getQuestionNumber() + 1);
 
@@ -388,6 +409,9 @@ public class QuestionActivity extends XmlParserActivity
 
     }
 
+    /**
+     * If we Answered Incorrectly we run ads, vibrate and show up a Toast
+     */
     public void answeredIncorrectly() {
 
         // Ad

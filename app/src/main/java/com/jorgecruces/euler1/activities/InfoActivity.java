@@ -8,6 +8,9 @@ import android.view.View;
 import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 
+/**
+ * Info activity, it contains content info(Problems info), contactInfo, credits
+ */
 public class InfoActivity extends AppCompatActivity {
 
     @Override

@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -17,7 +16,7 @@ import java.util.ArrayList;
 
 
 /**
- * Activity with the number levels (1-300)
+ * Activity with a Quote and 100 buttons for the 100 levels
  */
 public class NumbersLevelsActivity extends AppCompatActivity {
 
@@ -39,6 +38,7 @@ public class NumbersLevelsActivity extends AppCompatActivity {
         // Set title
         textViewLevelTitleNumbers = (TextView) findViewById(R.id.textViewLevelLabel);
         textViewLevelTitleNumbers.setText(R.string.app_name);
+
 
         gridLayout = (ViewGroup) findViewById(R.id.gridLayoutNumbers);
 
@@ -87,6 +87,9 @@ public class NumbersLevelsActivity extends AppCompatActivity {
         }
     }
 
+    /**
+     * Update the state of the buttons, it allows to refresh buttons color and disable or enable it
+     */
     private void updateButtonsState()
     {
         for (LevelButton levelButton : levelButtons)

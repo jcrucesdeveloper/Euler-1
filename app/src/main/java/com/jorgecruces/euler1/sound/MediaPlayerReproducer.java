@@ -2,10 +2,12 @@ package com.jorgecruces.euler1.sound;
 
 import android.content.Context;
 import android.media.MediaPlayer;
-import android.provider.MediaStore;
 
 import com.jorgecruces.euler1.R;
 
+/**
+ * Singleton that reproduce the sound across the App
+ */
 public class MediaPlayerReproducer {
 
     private static final MediaPlayerReproducer mp = new MediaPlayerReproducer();
@@ -16,6 +18,9 @@ public class MediaPlayerReproducer {
 
     }
 
+    /**
+     * Change between reproduce sound or do nothing
+     */
     public void changeAudioReproducing() {
         if (isAudioReproducing)
         {
@@ -33,7 +38,7 @@ public class MediaPlayerReproducer {
 
     /**
      * Reproduce click Sound
-     * @param context
+     * @param context activity
      */
     public void reproduceClickSound(Context context)
     {
@@ -42,7 +47,7 @@ public class MediaPlayerReproducer {
 
     /**
      * Reproduce Win Sound
-     * @param context
+     * @param context activity
      */
     public void reproduceWinSound(Context context)
     {
@@ -51,6 +56,8 @@ public class MediaPlayerReproducer {
 
     /**
      * Reproduce sound
+     * @param context the activity where we reproduce the sound
+     * @param R the sound file from Resources
      */
     private void reproduceSound(Context context, int R)
     {

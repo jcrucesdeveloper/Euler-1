@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
-import android.util.Log;
 import android.widget.Button;
 
 import com.jorgecruces.euler1.activities.QuestionActivity;
@@ -12,14 +11,15 @@ import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 
 
 /**
- * ButtonLevel that will be replicated 300th times
+ * LevelButton, Logical and xml representation of a Button
  */
 @SuppressLint("AppCompatCustomView")
 public class LevelButton extends Button {
 
-    // the number of the button
+    // The number of the button
     private int number;
-    // the last level where the player is in
+
+    // The last level where the player is
     private int lastLevelNumber;
 
     private Activity numbersLevelActivity;
@@ -36,6 +36,7 @@ public class LevelButton extends Button {
     {
         this.lastLevelNumber = lastLevelNumber;
     }
+
     /**
      * Configure the button:
      *  - Add listener to go to the next activity
@@ -54,6 +55,9 @@ public class LevelButton extends Button {
         this.setTextColor(Color.BLACK);
     }
 
+    /**
+     * Update the state of the Button depending of the lastLevel where the player is
+     */
     public void updateButton()
     {
         if (this.number <= this.lastLevelNumber)
@@ -79,16 +83,6 @@ public class LevelButton extends Button {
         Intent questionActivityIntent = new Intent(this.numbersLevelActivity, QuestionActivity.class);
         questionActivityIntent.putExtra("levelNumber",Integer.toString(this.number));
         this.numbersLevelActivity.startActivity(questionActivityIntent);
-    }
-
-
-    /**
-     * Get the level number (Integer)
-     * @return number the level number
-     */
-    public int getNumber()
-    {
-        return this.number;
     }
 }
 
