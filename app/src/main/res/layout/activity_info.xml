@@ -135,13 +135,39 @@
         android:textColor="#FFF6F6"
         android:textSize="14sp" />
 
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        app:srcCompat="@android:drawable/btn_star" />
+
+    <TextView
+        android:id="@+id/textViewInfo3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif-medium"
+        android:text="CREDITS "
+        android:textAlignment="center"
+        android:textColor="#FFFFFF"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="15dp"
+        android:text="Sound effects obtained from https://www.zapsplat.com"
+        android:textAlignment="center"
+        android:textColor="#FFF6F6"
+        android:textSize="12sp" />
+
+
     <TextView
         android:id="@+id/textView13"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fontFamily="sans-serif-thin"
-        android:gravity="bottom"
-        android:padding="20dp"
         android:text='"Parece que pasado mañana va a llover"'
         android:textAlignment="center"
         android:textColor="#FFFFFF" />
