@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Vibrator;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,13 +17,8 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.ads.AdError;
 import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.FullScreenContentCallback;
 import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.MobileAds;
-import com.google.android.gms.ads.initialization.InitializationStatus;
-import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.google.android.gms.ads.interstitial.InterstitialAd;
 import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.jorgecruces.euler1.R;
@@ -59,6 +53,10 @@ public class QuestionActivity extends XmlParserActivity
     // Last Level number
     private int lastLevelNumber;
 
+    // Numbers of levels played for an ad to be shown
+    private int levelsForAds = 20;
+
+
 
     private InterstitialAd mInterstitialAd;
 
@@ -67,6 +65,7 @@ public class QuestionActivity extends XmlParserActivity
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
+
         initializeInterstitialAd();
         setUpQuestion();
         renderLabels();
@@ -74,25 +73,54 @@ public class QuestionActivity extends XmlParserActivity
         renderAlternatives();
     }
 
+    public void checkAdsRequisite()
+    {
+        int numbersLevelPlayed = getNumbersLevelPlayed();
+        if (numbersLevelPlayed >= levelsForAds)
+        {
+            if (mInterstitialAd != null)
+            {
+                mInterstitialAd.show(QuestionActivity.this);
+            }
+            saveSharedPreferencesLevelsPlayed(0);
+        }
+    }
+
+    public int getNumbersLevelPlayed()
+    {
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.app_name), Context.MODE_PRIVATE);
+        return sharedPreferences.getInt(getString(R.string.ads),0);
+    }
+
+    public void saveSharedPreferencesLevelsPlayed(int n)
+    {
+        SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.app_name),MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt(getString(R.string.ads),n);
+        editor.apply();
+    }
+
+    /**
+     * Initialize the Ads
+     */
     public void initializeInterstitialAd()
     {
+        String adUnitID = getResources().getString(R.string.ad_string);
         AdRequest adRequest = new AdRequest.Builder().build();
-        String TAG = "alkfdj";
-
-        InterstitialAd.load(this,"ca-app-pub-3940256099942544/1033173712", adRequest,
+        InterstitialAd.load(this,adUnitID, adRequest,
                 new InterstitialAdLoadCallback() {
+
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                         // The mInterstitialAd reference will be null until
                         // an ad is loaded.
                         mInterstitialAd = interstitialAd;
-                        Log.i(TAG, "onAdLoaded");
+                        checkAdsRequisite();
                     }
 
                     @Override
                     public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
                         // Handle the error
-                        Log.i(TAG, loadAdError.getMessage());
                         mInterstitialAd = null;
                     }
                 });
@@ -169,8 +197,6 @@ public class QuestionActivity extends XmlParserActivity
 
         if(questionLabel.length() > 14) questionFontSize = "20";
         if(questionLabel.length() > 21) questionFontSize = "18";
-
-
 
         mathView = (MathView) findViewById(R.id.mathView);
         mathView.setText("<div style=\"font-size:" + questionFontSize + "px;color:white;\"> $$" + questionLabel + "$$ </div>");
@@ -267,6 +293,7 @@ public class QuestionActivity extends XmlParserActivity
     public void answeredCorrectly()
     {
         MediaPlayerReproducer.getInstance().reproduceWinSound(this);
+
         SharedPreferences sharedPreferences = getSharedPreferences(String.valueOf(R.string.app_name), Context.MODE_PRIVATE);
         int lastLevelNumber = sharedPreferences.getInt(getString(R.string.level),1);
 
@@ -274,8 +301,16 @@ public class QuestionActivity extends XmlParserActivity
         {
             storeLastLevelInMemory();
         }
+        saveNumbersLevelPlayed();
         showDialogNextLevel();
     }
+
+    public void saveNumbersLevelPlayed()
+    {
+        int numbersLevelPlayed = getNumbersLevelPlayed();
+        saveSharedPreferencesLevelsPlayed(numbersLevelPlayed + 1);
+    }
+
 
     /**
      * We store the current level as the last level to play
@@ -287,7 +322,6 @@ public class QuestionActivity extends XmlParserActivity
         // We save the next level as the lasLevelNumber, because here is where we are
         editor.putInt(getString(R.string.level), (this.levelNumber + 1));
         editor.apply();
-
     }
 
     /**
@@ -312,9 +346,24 @@ public class QuestionActivity extends XmlParserActivity
 
         // Random phrase
         messageNextLevel.setText(getNextLevelPhrase());
-        nextLevelButton.setOnClickListener(view -> goingNextLevel());
+
+        if (levelNumber >= 100)
+        {
+            nextLevelButton.setOnClickListener(view -> toInfoActivity());
+
+        } else
+        {
+            nextLevelButton.setOnClickListener(view -> toNextLevel());
+        }
+
         nextLevelDialog.show();
 
+    }
+
+    public void toInfoActivity()
+    {
+        Intent intentNumbersLevel = new Intent(getApplicationContext(), InfoActivity.class);
+        startActivity(intentNumbersLevel);
     }
 
     /**
@@ -328,7 +377,7 @@ public class QuestionActivity extends XmlParserActivity
         return phrases[quoteNumber];
     }
 
-    public void goingNextLevel() {
+    public void toNextLevel() {
         String nextLevelStr = Integer.toString(questionLevel.getQuestionNumber() + 1);
 
         // We go to the same activity but with different levelNumber
@@ -348,7 +397,7 @@ public class QuestionActivity extends XmlParserActivity
         }
         // Vibration
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
-        v.vibrate(300);
+        v.vibrate(400);
 
         // Toast
         Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
