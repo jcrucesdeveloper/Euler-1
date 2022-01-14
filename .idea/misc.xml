@@ -8,6 +8,7 @@
         <entry key="app/src/main/res/drawable/adasdf.xml" value="0.13243243243243244" />
         <entry key="app/src/main/res/drawable/arrow_back.xml" value="0.26296296296296295" />
         <entry key="app/src/main/res/drawable/button_shadow.xml" value="0.33918918918918917" />
+        <entry key="app/src/main/res/drawable/checkbox.xml" value="0.1152027027027027" />
         <entry key="app/src/main/res/drawable/checkboxWinning.xml" value="0.13243243243243244" />
         <entry key="app/src/main/res/drawable/ic_baseline_navigate_next_24.xml" value="0.13243243243243244" />
         <entry key="app/src/main/res/drawable/ic_baseline_play_circle_outline_24.xml" value="0.22760416666666666" />
@@ -22,7 +23,7 @@
         <entry key="app/src/main/res/layout/activity_info.xml" value="0.22" />
         <entry key="app/src/main/res/layout/activity_list_levels.xml" value="0.2" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/activity_numbers_levels.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/activity_numbers_levels.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_question.xml" value="0.15" />
         <entry key="app/src/main/res/layout/button_level.xml" value="0.22" />
         <entry key="app/src/main/res/layout/confirm_reset_level_dialog.xml" value="0.22" />

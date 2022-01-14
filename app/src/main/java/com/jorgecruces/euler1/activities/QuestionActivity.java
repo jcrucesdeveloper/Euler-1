@@ -154,8 +154,14 @@ public class QuestionActivity extends XmlParserActivity
         String questionNumberStr;
         questionNumberStr = getIntent().getStringExtra("levelNumber");
 
+        // Solved bug
+        try {
+            this.levelNumber = Integer.parseInt(questionNumberStr);
 
-        this.levelNumber = Integer.parseInt(questionNumberStr);
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
 
         // For some reason, we did not find the question
         if (questionNumberStr == null)
