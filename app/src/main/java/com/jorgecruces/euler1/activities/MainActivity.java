@@ -38,7 +38,7 @@ public class MainActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        initializeAds();
+        //initializeAds();
 
         // Title and Quote
         textViewQuote = (TextView) findViewById(R.id.textViewQuote);
@@ -46,13 +46,11 @@ public class MainActivity extends AppCompatActivity
 
         // InfoButton, PlayButton,  and Euler image
         // SoundButton
-        imageViewInfoButton = (ImageView) findViewById(R.id.imageViewInfoButton);
-        imageViewPlayButton = (ImageView) findViewById(R.id.imageViewPlayButton);
-        imageViewEulerPrincipal = (ImageView) findViewById(R.id.imageViewEulerMain);
-        imageViewVolumeButton = (ImageView) findViewById(R.id.volumeButton);
+        imageViewInfoButton = (ImageView) findViewById(R.id.buttonInfoActivity);
+        imageViewPlayButton = (ImageView) findViewById(R.id.buttonPlay);
+        imageViewEulerPrincipal = (ImageView) findViewById(R.id.imageViewEuler);
 
         soundOn = true;
-        imageViewVolumeButton.setOnClickListener(view -> { onClickVolumeButton();});
 
 
         // At the start we fade and select a quote
@@ -161,7 +159,7 @@ public class MainActivity extends AppCompatActivity
     /**
      * Enable or disable sound and change the image of the VolumeButton
      */
-    public void onClickVolumeButton()
+    public void onClickVolumeButton(View view)
     {
         // Enable sound or disable
         MediaPlayerReproducer.getInstance().changeAudioReproducing();
