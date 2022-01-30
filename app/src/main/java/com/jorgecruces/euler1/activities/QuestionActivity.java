@@ -1,5 +1,7 @@
 package com.jorgecruces.euler1.activities;
 
+import static android.content.ContentValues.TAG;
+
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,10 +19,12 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
-import com.google.android.gms.ads.AdRequest;
-import com.google.android.gms.ads.LoadAdError;
-import com.google.android.gms.ads.interstitial.InterstitialAd;
-import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
+
+
+import com.facebook.ads.Ad;
+import com.facebook.ads.AdError;
+import com.facebook.ads.InterstitialAd;
+import com.facebook.ads.InterstitialAdListener;
 import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.gameLogic.Question;
 import com.jorgecruces.euler1.gameLogic.XmlParserActivity;
@@ -57,7 +61,9 @@ public class QuestionActivity extends XmlParserActivity
     private final int maxNumberLevelsForAds = 20;
 
 
-    private InterstitialAd mInterstitialAd;
+    // Ads
+    private InterstitialAd interstitialAd;
+    private boolean adReady;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -65,6 +71,7 @@ public class QuestionActivity extends XmlParserActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_question);
 
+        adReady = false;
         initializeInterstitialAd();
         setUpQuestion();
         renderLabels();
@@ -80,9 +87,9 @@ public class QuestionActivity extends XmlParserActivity
         int numbersLevelPlayed = getNumbersLevelPlayed();
         if (numbersLevelPlayed >= maxNumberLevelsForAds)
         {
-            if (mInterstitialAd != null)
+            if (interstitialAd != null && adReady)
             {
-                mInterstitialAd.show(QuestionActivity.this);
+                interstitialAd.show();
             }
             saveSharedPreferencesLevelsPlayed(0);
         }
@@ -115,33 +122,57 @@ public class QuestionActivity extends XmlParserActivity
      */
     public void initializeInterstitialAd()
     {
-        // AdUnit from Interstitial
-        // Change for production
-        String adUnitID = getResources().getString(R.string.ad_string);
+        interstitialAd = new InterstitialAd(this, "3063497290591741_3063506153924188");
+        // Create listeners for the Interstitial Ad
+        InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
+            @Override
+            public void onInterstitialDisplayed(Ad ad) {
+                // Interstitial ad displayed callback
+            }
 
-        AdRequest adRequest = new AdRequest.Builder().build();
 
-        InterstitialAd.load(this,adUnitID, adRequest,
-                new InterstitialAdLoadCallback() {
+            @Override
+            public void onInterstitialDismissed(Ad ad) {
+                // Interstitial dismissed callback
+            }
 
-                    @Override
-                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
-                        // The mInterstitialAd reference will be null until
-                        // an ad is loaded.
-                        mInterstitialAd = interstitialAd;
-                        checkAdsRequisite();
-                    }
+            @Override
+            public void onError(Ad ad, AdError adError) {
+                // Ad error callback
+            }
 
-                    @Override
-                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
-                        // Handle the error
-                        mInterstitialAd = null;
-                    }
-                });
+            @Override
+            public void onAdLoaded(Ad ad) {
+                // Interstitial ad is loaded and ready to be displayed
+                // Show the ad
+                adReady = true;
+            }
 
+            @Override
+            public void onAdClicked(Ad ad) {
+                // Ad clicked callback
+            }
+
+            @Override
+            public void onLoggingImpression(Ad ad) {
+                // Ad impression logged callback
+            }
+        };
+
+        // For auto play video ads, it's recommended to load the ad
+        // at least 30 seconds before it is shown
+        interstitialAd.loadAd(
+                interstitialAd.buildLoadAdConfig()
+                        .withAdListener(interstitialAdListener)
+                        .build());
     }
 
-
+    protected void onDestroy() {
+        if (interstitialAd != null) {
+            interstitialAd.destroy();
+        }
+        super.onDestroy();
+    }
     /**
      * Get the question from xml asset file and charge it to the
      * Question representation named questionLevel
@@ -421,9 +452,9 @@ public class QuestionActivity extends XmlParserActivity
     public void answeredIncorrectly() {
 
         // Ad
-        if (mInterstitialAd != null)
+        if (adReady && interstitialAd != null)
         {
-            mInterstitialAd.show(QuestionActivity.this);
+            interstitialAd.show();
         }
         // Vibration
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
