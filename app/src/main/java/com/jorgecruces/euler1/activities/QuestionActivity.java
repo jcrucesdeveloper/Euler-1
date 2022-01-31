@@ -1,6 +1,5 @@
 package com.jorgecruces.euler1.activities;
 
-import static android.content.ContentValues.TAG;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -16,8 +15,6 @@ import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 
 
 
@@ -122,7 +119,7 @@ public class QuestionActivity extends XmlParserActivity
      */
     public void initializeInterstitialAd()
     {
-        interstitialAd = new InterstitialAd(this, "3063497290591741_3063506153924188");
+        interstitialAd = new InterstitialAd(this, "3063497290591741_3064583183816485");
         // Create listeners for the Interstitial Ad
         InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
             @Override
@@ -146,6 +143,7 @@ public class QuestionActivity extends XmlParserActivity
                 // Interstitial ad is loaded and ready to be displayed
                 // Show the ad
                 adReady = true;
+                checkAdsRequisite();
             }
 
             @Override
