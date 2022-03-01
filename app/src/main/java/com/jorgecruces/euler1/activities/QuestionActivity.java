@@ -62,6 +62,8 @@ public class QuestionActivity extends AppCompatActivity
     // Numbers of levels played for an ad to be shown
     private final int maxNumberLevelsForAds = 20;
 
+    private boolean answerIncorrectly;
+
 
     // Ads
     private InterstitialAd interstitialAd;
@@ -148,6 +150,11 @@ public class QuestionActivity extends AppCompatActivity
                 // Show the ad
                 adReady = true;
                 checkAdsRequisite();
+
+                if (answerIncorrectly) {
+                    interstitialAd.show();
+                    answerIncorrectly = false;
+                }
             }
 
             @Override
@@ -186,6 +193,8 @@ public class QuestionActivity extends AppCompatActivity
         // Question number Str
         String questionNumberStr = getIntent().getStringExtra("levelNumber");
         levelNumber = Integer.parseInt(questionNumberStr);
+
+        answerIncorrectly = false;
 
         questionList = getQuestionArrayList();
 
@@ -479,11 +488,7 @@ public class QuestionActivity extends AppCompatActivity
      */
     public void answeredIncorrectly() {
 
-        // Ad
-        if (adReady && interstitialAd != null)
-        {
-            interstitialAd.show();
-        }
+        answerIncorrectly = true;
         // Vibration
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(400);
