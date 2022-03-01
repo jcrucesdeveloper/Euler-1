@@ -120,20 +120,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:fontFamily="sans-serif-medium"
-        android:text="CONTACT INFO"
+        android:text="Want more equestions?"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         android:textSize="24sp" />
 
-    <TextView
-        android:id="@+id/textView12"
-        android:layout_width="match_parent"
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="237dp"
         android:layout_height="wrap_content"
-        android:layout_margin="15dp"
-        android:text="jcrucesdeveloper@gmail.com"
-        android:textAlignment="center"
-        android:textColor="#FFF6F6"
-        android:textSize="14sp" />
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_margin="10dp"
+        android:text="Try euler 2" />
 
     <ImageView
         android:id="@+id/imageView5"

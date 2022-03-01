@@ -24,8 +24,10 @@ import com.facebook.ads.AdError;
 import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
 import com.jorgecruces.euler1.R;
-import com.jorgecruces.euler1.gameLogic.Question;
-import com.jorgecruces.euler1.gameLogic.XmlParserActivity;
+import com.jorgecruces.euler1.logic.ReaderQuestions;
+import com.jorgecruces.euler1.logic.XmlParserActivity;
+import com.jorgecruces.euler1.model.Alternative;
+import com.jorgecruces.euler1.model.Question;
 import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 
 import java.util.ArrayList;
@@ -50,7 +52,8 @@ public class QuestionActivity extends XmlParserActivity
     // Current question (Logical Question)
     private Question questionLevel;
 
-    private String correctAlternative;
+    // Correct alternative Level
+    private Alternative correctAlternative;
 
     // Current level number 1 - 100
     private int levelNumber;
@@ -127,8 +130,6 @@ public class QuestionActivity extends XmlParserActivity
             public void onInterstitialDisplayed(Ad ad) {
                 // Interstitial ad displayed callback
             }
-
-
             @Override
             public void onInterstitialDismissed(Ad ad) {
                 // Interstitial dismissed callback
@@ -180,43 +181,24 @@ public class QuestionActivity extends XmlParserActivity
     public void setUpQuestion()
     {
 
-        // Question number from the intent
-        String questionNumberStr;
-        questionNumberStr = getIntent().getStringExtra("levelNumber");
+        // Question number Str
+        String questionNumberStr = getIntent().getStringExtra("levelNumber");
+        levelNumber = Integer.parseInt(questionNumberStr);
 
-        // Solved bug
-        try {
-            this.levelNumber = Integer.parseInt(questionNumberStr);
-
-        } catch (Exception e)
-        {
-            e.printStackTrace();
-        }
-
-        // For some reason, we did not find the question
-        if (questionNumberStr == null)
-        {
-            questionNumberStr = "-1";
-        }
-
-
-        int questionIndex = this.levelNumber - 1;
-        questionList = getQuestionList();
+        questionList = getQuestionArrayList();
 
         // Default question if something goes wrong
         questionLevel = new Question();
 
-        try
-        {
-            questionLevel = questionList.get(questionIndex);
-            questionLevel.setQuestionNumber(questionIndex + 1);
-        }
-        catch(Exception e)
-        {
-            Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
-        }
+        int questionIndex = this.levelNumber - 1;
+        questionLevel = questionList.get(questionIndex);
 
-        correctAlternative = questionLevel.getCorrectAlternative();
+        this.correctAlternative = questionLevel.getCorrectAlternative();
+    }
+
+    public ArrayList<Question> getQuestionArrayList() {
+        ReaderQuestions readerQuestions = new ReaderQuestions();
+        return readerQuestions.readQuestions(this);
     }
 
     /**
@@ -228,8 +210,6 @@ public class QuestionActivity extends XmlParserActivity
 
         // Question Number
         TextView textViewCurrentLevelNumber = (TextView) findViewById(R.id.textViewCurrentLevelNumber);
-        textViewCurrentLevelNumber.setText(questionLevel.getQuestionNumberString());
-
         // Question Title (Optional)
         TextView textViewQuestionTile = (TextView) findViewById(R.id.textViewQuestionTitle);
         textViewQuestionTile.setText(questionLevel.getQuestionTitle());
@@ -270,10 +250,10 @@ public class QuestionActivity extends XmlParserActivity
         textViewList.add(textViewAlternative4);
 
         String alternative1,alternative2,alternative3,alternative4;
-        alternative1 = questionLevel.getAlternative1();
-        alternative2 = questionLevel.getAlternative2();
-        alternative3 = questionLevel.getAlternative3();
-        alternative4 = questionLevel.getCorrectAlternative();
+        alternative1 = questionLevel.getAlternativeByNumber(0).getValue();
+        alternative2 = questionLevel.getAlternativeByNumber(1).getValue();
+        alternative3 = questionLevel.getAlternativeByNumber(2).getValue();
+        alternative4 = questionLevel.getCorrectAlternative().getValue();
 
         List<String> alternativesList = new ArrayList<String>();
 
@@ -294,7 +274,6 @@ public class QuestionActivity extends XmlParserActivity
             if(alternativeTemp.length() > 10)
             {
                 textViewTemp.setTextSize(TypedValue.COMPLEX_UNIT_SP,28f);
-
             }
         }
 
@@ -460,8 +439,8 @@ public class QuestionActivity extends XmlParserActivity
      * Go to the next Level
      */
     public void toNextLevel() {
-        String nextLevelStr = Integer.toString(questionLevel.getQuestionNumber() + 1);
 
+        String nextLevelStr = Integer.toString(this.levelNumber + 1);
         // We go to the same activity but with different levelNumber
         Intent intent = getIntent();
         intent.putExtra("levelNumber",nextLevelStr);

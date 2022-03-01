@@ -1,4 +1,4 @@
-package com.jorgecruces.euler1.gameLogic;
+package com.jorgecruces.euler1.logic;
 
 /**
  * Logical representation of a Question
