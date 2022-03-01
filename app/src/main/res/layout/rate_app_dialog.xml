@@ -11,16 +11,12 @@
         android:id="@+id/buttonTitleRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="8dp"
+        android:layout_marginTop="8dp"
         android:fontFamily="sans-serif-light"
-        android:gravity="center_horizontal"
-        android:padding="10dp"
-        android:text="Are you sure you want to reset?"
+        android:padding="20dp"
+        android:text="Are you enjoying Euler?"
         android:textColor="#FFFFFF"
-        android:textSize="22sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/buttonStar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -32,7 +28,7 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
         android:backgroundTint="#FFFFFF"
-        android:text="RESET LEVELS D:"
+        android:text="Rate it!"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -40,13 +36,28 @@
 
     <ImageView
         android:id="@+id/buttonStar"
-        android:layout_width="107dp"
-        android:layout_height="99dp"
+        android:layout_width="77dp"
+        android:layout_height="91dp"
+        android:layout_marginTop="-20dp"
         app:layout_constraintBottom_toTopOf="@+id/buttonRateIt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonTitleRate"
-        app:srcCompat="@drawable/reset_button" />
+        app:srcCompat="@android:drawable/star_big_off" />
+
+    <ImageView
+        android:id="@+id/buttonCloseDialog"
+        android:layout_width="45dp"
+        android:layout_height="58dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="149dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttonTitleRate"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/close_button" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

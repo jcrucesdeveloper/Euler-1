@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -382,16 +383,14 @@ public class QuestionActivity extends XmlParserActivity
         Dialog nextLevelDialog = new Dialog(this);
         nextLevelDialog.setContentView(R.layout.custom_dialog_winning);
 
-        // Animation popUp
+        // Animation fadeInAnimation
         Animation fadeInAnimation = AnimationUtils.loadAnimation(this,R.anim.fadein_pop_up);
-
-        // fadeIn animation
         ViewGroup dialogLayout = (ViewGroup) nextLevelDialog.findViewById(R.id.dialogLayout);
         dialogLayout.startAnimation(fadeInAnimation);
 
         // Button and textView of the popUp
-        Button nextLevelButton = (Button) nextLevelDialog.findViewById(R.id.confirmResetLevelsButton);
-        TextView messageNextLevel = (TextView) nextLevelDialog.findViewById(R.id.nextLevelTextView);
+        Button nextLevelButton = (Button) nextLevelDialog.findViewById(R.id.buttonRateIt);
+        TextView messageNextLevel = (TextView) nextLevelDialog.findViewById(R.id.buttonTitleRate);
 
         // Random phrase
         messageNextLevel.setText(getNextLevelPhrase());
@@ -405,9 +404,36 @@ public class QuestionActivity extends XmlParserActivity
         {
             nextLevelButton.setOnClickListener(view -> toNextLevel());
         }
-
         nextLevelDialog.show();
 
+    }
+
+    public void showDialogRateIt()
+    {
+        Dialog rateItDialog = new Dialog(this);
+        rateItDialog.setContentView(R.layout.rate_app_dialog);
+
+
+        // fadeInAnimation
+        Animation fadeInAnimation = AnimationUtils.loadAnimation(this,R.anim.fadein_pop_up);
+        ViewGroup dialogLayout = (ViewGroup) rateItDialog.findViewById(R.id.dialogLayout);
+        dialogLayout.startAnimation(fadeInAnimation);
+
+        // Button, imageViewStart, textView
+        Button buttonRateIt = (Button) findViewById(R.id.buttonRateIt);
+        ImageView imageViewStart = (ImageView) findViewById(R.id.buttonStar);
+        TextView textViewRateIt = (TextView) findViewById(R.id.buttonTitleRate);
+
+        // CloseDialog
+        ImageView imageViewCloseDialog = (ImageView) findViewById(R.id.buttonCloseDialog);
+
+        // Go to the appStore and rate it
+        buttonRateIt.setOnClickListener(view -> {});
+        imageViewStart.setOnClickListener(view -> {});
+        textViewRateIt.setOnClickListener(view -> {});
+
+        // close
+        imageViewCloseDialog.setOnClickListener(view -> rateItDialog.dismiss());
     }
 
     /**
@@ -460,7 +486,6 @@ public class QuestionActivity extends XmlParserActivity
 
         // Toast
         Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
-
 
     }
 

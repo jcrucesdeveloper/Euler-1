@@ -17,7 +17,7 @@ import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 public class LevelButton extends Button {
 
     // The number of the button
-    private int number;
+    private final int number;
 
     // The last level where the player is
     private int lastLevelNumber;

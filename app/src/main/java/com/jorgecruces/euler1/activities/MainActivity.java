@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity
         Dialog confirmResetButtonDialog = new Dialog(this);
         confirmResetButtonDialog.setContentView(R.layout.confirm_reset_level_dialog);
 
-        Button confirmButton = (Button) confirmResetButtonDialog.findViewById(R.id.confirmResetLevelsButton);
+        Button confirmButton = (Button) confirmResetButtonDialog.findViewById(R.id.buttonRateIt);
         confirmButton.setOnClickListener(button -> resetLevels(confirmResetButtonDialog));
 
         confirmResetButtonDialog.show();

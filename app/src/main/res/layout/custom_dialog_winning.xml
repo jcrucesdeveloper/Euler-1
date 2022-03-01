@@ -7,7 +7,7 @@
     android:background="#000000">
 
     <TextView
-        android:id="@+id/nextLevelTextView"
+        android:id="@+id/buttonTitleRate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
@@ -16,13 +16,13 @@
         android:text="CONGRATULATIONS!"
         android:textColor="#FFFFFF"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/imageView3"
+        app:layout_constraintBottom_toTopOf="@+id/buttonStar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/confirmResetLevelsButton"
+        android:id="@+id/buttonRateIt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
@@ -34,15 +34,15 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView3"
+        android:id="@+id/buttonStar"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:layout_marginTop="-20dp"
-        app:layout_constraintBottom_toTopOf="@+id/confirmResetLevelsButton"
+        app:layout_constraintBottom_toTopOf="@+id/buttonRateIt"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nextLevelTextView"
+        app:layout_constraintTop_toBottomOf="@+id/buttonTitleRate"
         app:srcCompat="@drawable/checkbox" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
