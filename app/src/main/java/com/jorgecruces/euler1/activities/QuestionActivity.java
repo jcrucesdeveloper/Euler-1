@@ -5,6 +5,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.TypedValue;
@@ -18,6 +19,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.facebook.ads.Ad;
 import com.facebook.ads.AdError;
@@ -25,7 +27,6 @@ import com.facebook.ads.InterstitialAd;
 import com.facebook.ads.InterstitialAdListener;
 import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.logic.ReaderQuestions;
-import com.jorgecruces.euler1.logic.XmlParserActivity;
 import com.jorgecruces.euler1.model.Alternative;
 import com.jorgecruces.euler1.model.Question;
 import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
@@ -41,7 +42,7 @@ import io.github.kexanie.library.MathView;
 /**
  * QuestionActivity, it has the questionLabel and the Alternatives
  */
-public class QuestionActivity extends XmlParserActivity
+public class QuestionActivity extends AppCompatActivity
 {
 
     private MathView mathView;
@@ -78,6 +79,7 @@ public class QuestionActivity extends XmlParserActivity
         renderLabels();
         renderQuestion();
         renderAlternatives();
+        checkIfRateItDialog();
     }
 
     /**
@@ -210,6 +212,7 @@ public class QuestionActivity extends XmlParserActivity
 
         // Question Number
         TextView textViewCurrentLevelNumber = (TextView) findViewById(R.id.textViewCurrentLevelNumber);
+        textViewCurrentLevelNumber.setText(Integer.toString(this.levelNumber));
         // Question Title (Optional)
         TextView textViewQuestionTile = (TextView) findViewById(R.id.textViewQuestionTitle);
         textViewQuestionTile.setText(questionLevel.getQuestionTitle());
@@ -300,7 +303,7 @@ public class QuestionActivity extends XmlParserActivity
         TextView textViewAlternative = (TextView) view;
         String stringAlternative = textViewAlternative.getText().toString();
 
-        if(stringAlternative.equals(correctAlternative))
+        if(stringAlternative.equals(correctAlternative.getValue()))
         {
             // Correct Alternative
             answeredCorrectly();
@@ -309,6 +312,22 @@ public class QuestionActivity extends XmlParserActivity
         {
             // Incorrect Alternative
             answeredIncorrectly();
+        }
+    }
+
+    /**
+     * Check if it's level 20 and show rate it dialog
+     */
+    public void checkIfRateItDialog()
+    {
+        switch (levelNumber)  {
+            case 15:
+            case 50:
+            case 80:
+                showDialogRateIt();
+                break;
+
+
         }
     }
 
@@ -399,20 +418,26 @@ public class QuestionActivity extends XmlParserActivity
         dialogLayout.startAnimation(fadeInAnimation);
 
         // Button, imageViewStart, textView
-        Button buttonRateIt = (Button) findViewById(R.id.buttonRateIt);
-        ImageView imageViewStart = (ImageView) findViewById(R.id.buttonStar);
-        TextView textViewRateIt = (TextView) findViewById(R.id.buttonTitleRate);
+        Button buttonRateIt = (Button) rateItDialog.findViewById(R.id.buttonRateIt);
+        ImageView imageViewStart = (ImageView) rateItDialog.findViewById(R.id.buttonStar);
+        TextView textViewRateIt = (TextView) rateItDialog.findViewById(R.id.buttonTitleRate);
 
         // CloseDialog
-        ImageView imageViewCloseDialog = (ImageView) findViewById(R.id.buttonCloseDialog);
+        ImageView imageViewCloseDialog = (ImageView) rateItDialog.findViewById(R.id.buttonCloseDialog);
 
         // Go to the appStore and rate it
-        buttonRateIt.setOnClickListener(view -> {});
-        imageViewStart.setOnClickListener(view -> {});
-        textViewRateIt.setOnClickListener(view -> {});
+        buttonRateIt.setOnClickListener(view -> goToStore());
+        imageViewStart.setOnClickListener(view -> goToStore());
+        textViewRateIt.setOnClickListener(view -> goToStore());
 
         // close
         imageViewCloseDialog.setOnClickListener(view -> rateItDialog.dismiss());
+        rateItDialog.show();
+    }
+
+    public void goToStore() {
+        Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("market://details?id=com.jorgecruces.euler1"));
+        startActivity(intent);
     }
 
     /**
