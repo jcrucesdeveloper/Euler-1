@@ -55,12 +55,12 @@
                 android:textSize="24sp" />
 
             <Button
-                android:id="@+id/button2"
+                android:id="@+id/buttonTryEuler"
                 android:layout_width="237dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal|center_vertical"
                 android:layout_margin="10dp"
-                android:text="Try euler 2" />
+                android:text="@string/buttonNextEuler" />
 
             <ImageView
                 android:id="@+id/imageView4"

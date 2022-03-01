@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="buttonNextEuler">Try Euler 2</string>
+    <string name="currentEulerLink">market://details?id=com.jorgecruces.euler1</string>
+    <string name="nextEulerLink">market://details?id=com.jorgecruces.euler2</string>
+</resources>
+
