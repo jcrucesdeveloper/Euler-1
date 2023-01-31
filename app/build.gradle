@@ -9,8 +9,8 @@ android {
         applicationId "com.jorgecruces.euler1"
         minSdk 21
         targetSdk 31
-        versionCode 8
-        versionName "1.6"
+        versionCode 9
+        versionName "1.7"
         vectorDrawables.useSupportLibrary = true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -35,8 +35,7 @@ dependencies {
     implementation 'androidx.gridlayout:gridlayout:1.0.0'
     implementation 'io.github.kexanie.library:MathView:0.0.6'
 
-    implementation 'com.facebook.android:audience-network-sdk:6.+'
-    implementation 'com.ironsource.adapters:facebookadapter:4.3.34'
+    implementation 'com.google.android.gms:play-services-ads-lite:21.4.0'
 
 
 

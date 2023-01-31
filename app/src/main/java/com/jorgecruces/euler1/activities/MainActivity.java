@@ -14,7 +14,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.ads.AudienceNetworkAds;
+import com.google.android.gms.ads.MobileAds;
 import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 
@@ -65,8 +65,10 @@ public class MainActivity extends AppCompatActivity
      */
     public void initializeAds()
     {
-        AudienceNetworkAds.initialize(this);
+        MobileAds.initialize(this, initializationStatus -> {
+        });
     }
+
 
     /**
      * Go to NumbersLevelActivity

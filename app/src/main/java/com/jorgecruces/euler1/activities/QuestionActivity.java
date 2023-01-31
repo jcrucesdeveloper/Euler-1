@@ -19,13 +19,16 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.facebook.ads.Ad;
-import com.facebook.ads.AdError;
-import com.facebook.ads.InterstitialAd;
-import com.facebook.ads.InterstitialAdListener;
+
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.LoadAdError;
+import com.google.android.gms.ads.interstitial.InterstitialAd;
+import com.google.android.gms.ads.interstitial.InterstitialAdLoadCallback;
 import com.jorgecruces.euler1.R;
+import com.jorgecruces.euler1.enviromentMode.EnvironmentModeHandler;
 import com.jorgecruces.euler1.logic.ReaderQuestions;
 import com.jorgecruces.euler1.model.Alternative;
 import com.jorgecruces.euler1.model.Question;
@@ -66,8 +69,8 @@ public class QuestionActivity extends AppCompatActivity
 
 
     // Ads
-    private InterstitialAd interstitialAd;
     private boolean adReady;
+    private InterstitialAd mInterstitialAd;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -92,14 +95,13 @@ public class QuestionActivity extends AppCompatActivity
         int numbersLevelPlayed = getNumbersLevelPlayed();
         if (numbersLevelPlayed >= maxNumberLevelsForAds)
         {
-            if (interstitialAd != null && adReady)
+            if (mInterstitialAd != null && adReady)
             {
-                interstitialAd.show();
+                mInterstitialAd.show(this);
             }
             saveSharedPreferencesLevelsPlayed(0);
         }
     }
-
     /**
      * Get from SharedPreferences the numbers of levels played
      * @return the numbers of level played (integer)
@@ -121,67 +123,28 @@ public class QuestionActivity extends AppCompatActivity
         editor.putInt(getString(R.string.ads),n);
         editor.apply();
     }
-
     /**
      * Initialize the Ads
      */
     public void initializeInterstitialAd()
     {
-        interstitialAd = new InterstitialAd(this, "3063497290591741_3064583183816485");
-        // Create listeners for the Interstitial Ad
-        InterstitialAdListener interstitialAdListener = new InterstitialAdListener() {
-            @Override
-            public void onInterstitialDisplayed(Ad ad) {
-                // Interstitial ad displayed callback
-            }
-            @Override
-            public void onInterstitialDismissed(Ad ad) {
-                // Interstitial dismissed callback
-            }
+        AdRequest adRequest = new AdRequest.Builder().build();
+        InterstitialAd.load(this,"ca-app-pub-8814283715092277/1033559658", adRequest,
+                new InterstitialAdLoadCallback() {
+                    @Override
+                    public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
+                        mInterstitialAd = interstitialAd;
+                        adReady = true;
+                    }
 
-            @Override
-            public void onError(Ad ad, AdError adError) {
-                // Ad error callback
-            }
-
-            @Override
-            public void onAdLoaded(Ad ad) {
-                // Interstitial ad is loaded and ready to be displayed
-                // Show the ad
-                adReady = true;
-                checkAdsRequisite();
-
-                if (answerIncorrectly) {
-                    interstitialAd.show();
-                    answerIncorrectly = false;
-                }
-            }
-
-            @Override
-            public void onAdClicked(Ad ad) {
-                // Ad clicked callback
-            }
-
-            @Override
-            public void onLoggingImpression(Ad ad) {
-                // Ad impression logged callback
-            }
-        };
-
-        // For auto play video ads, it's recommended to load the ad
-        // at least 30 seconds before it is shown
-        interstitialAd.loadAd(
-                interstitialAd.buildLoadAdConfig()
-                        .withAdListener(interstitialAdListener)
-                        .build());
+                    @Override
+                    public void onAdFailedToLoad(@NonNull LoadAdError loadAdError) {
+                        mInterstitialAd = null;
+                    }
+                });
     }
 
-    protected void onDestroy() {
-        if (interstitialAd != null) {
-            interstitialAd.destroy();
-        }
-        super.onDestroy();
-    }
+
     /**
      * Get the question from xml asset file and charge it to the
      * Question representation named questionLevel
@@ -483,18 +446,25 @@ public class QuestionActivity extends AppCompatActivity
 
     }
 
+
     /**
      * If we Answered Incorrectly we run ads, vibrate and show up a Toast
      */
     public void answeredIncorrectly() {
 
-        answerIncorrectly = true;
+        boolean testMode = EnvironmentModeHandler.getEnvironmentModeHandler().testMode();
+        // Ad
+        if ( (adReady && mInterstitialAd != null) && !testMode)
+        {
+            mInterstitialAd.show(this);
+        }
         // Vibration
         Vibrator v = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
         v.vibrate(400);
 
         // Toast
         Toast.makeText(this, "Wrong answer", Toast.LENGTH_SHORT).show();
+
 
     }
 
