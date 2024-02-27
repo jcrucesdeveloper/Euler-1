@@ -15,6 +15,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.MobileAds;
+import com.google.android.gms.ads.initialization.InitializationStatus;
+import com.google.android.gms.ads.initialization.OnInitializationCompleteListener;
 import com.jorgecruces.euler1.R;
 import com.jorgecruces.euler1.sound.MediaPlayerReproducer;
 
@@ -65,8 +67,11 @@ public class MainActivity extends AppCompatActivity
      */
     public void initializeAds()
     {
-        MobileAds.initialize(this, initializationStatus -> {
-        });
+        MobileAds.initialize(this, new OnInitializationCompleteListener() {
+            @Override
+            public void onInitializationComplete(InitializationStatus initializationStatus) {
+            }
+        });;
     }
 
 

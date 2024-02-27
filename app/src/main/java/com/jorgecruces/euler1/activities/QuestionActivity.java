@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Vibrator;
+import android.util.Log;
 import android.util.TypedValue;
 import android.view.View;
 import android.view.ViewGroup;
@@ -129,12 +130,13 @@ public class QuestionActivity extends AppCompatActivity
     public void initializeInterstitialAd()
     {
         AdRequest adRequest = new AdRequest.Builder().build();
-        InterstitialAd.load(this,"ca-app-pub-8814283715092277/1033559658", adRequest,
+        InterstitialAd.load(this,"ca-app-pub-2905296254158275/9456411900", adRequest,
                 new InterstitialAdLoadCallback() {
                     @Override
                     public void onAdLoaded(@NonNull InterstitialAd interstitialAd) {
                         mInterstitialAd = interstitialAd;
                         adReady = true;
+                        Log.i("ANUCIOS", "onAdLoaded");
                     }
 
                     @Override
